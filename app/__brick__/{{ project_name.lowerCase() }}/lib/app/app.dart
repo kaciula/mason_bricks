@@ -1,13 +1,12 @@
-import 'package:{{ project_name.snakeCase() }}/app/app_strings.al.dart';
-import 'package:{{ project_name.snakeCase() }}/features/common/pages/splash/cubit/splash_cubit.dart';
-import 'package:{{ project_name.snakeCase() }}/features/common/pages/splash/splash_page.dart';
-import 'package:{{ project_name.snakeCase() }}/features/common/utils/generic/page_utils.dart';
-import 'package:{{ project_name.snakeCase() }}/start/service_locator.dart';
 import 'package:auto_localized/auto_localized.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logging/logging.dart';
+import 'package:sample/app/app_strings.al.dart';
+import 'package:sample/features/common/pages/splash/cubit/splash_cubit.dart';
+import 'package:sample/features/common/pages/splash/splash_page.dart';
+import 'package:sample/features/common/utils/generic/page_utils.dart';
+import 'package:sample/start/service_locator.dart';
 import 'package:universal_io/io.dart';
 
 import 'app_messenger.dart';
@@ -31,49 +30,39 @@ class ThisAppState extends State<ThisApp> {
 
   @override
   Widget build(BuildContext context) {
-    return DevicePreview(
-      enabled: false,
-      builder: (BuildContext context) {
-        return AutoLocalizedApp(
-          child: BlocProvider<AppCubit>(
-            create: (BuildContext context) => _appCubit,
-            child: BlocBuilder<AppCubit, AppState>(
-              bloc: _appCubit,
-              builder: (BuildContext context, AppState state) {
-                return MaterialApp(
-                  useInheritedMediaQuery: true,
-                  locale: DevicePreview.locale(context),
-                  debugShowCheckedModeBanner: false,
-                  title: '{{ project_name.snakeCase() }}',
-                  supportedLocales: context.supportedLocales,
-                  localizationsDelegates: context.localizationsDelegates,
-                  builder: (BuildContext context, Widget? child) {
-                    final Size size = MediaQuery.of(context).size;
-                    _logger.fine('Device size ${size.width} x ${size.height}');
-                    return DevicePreview.appBuilder(
-                      context,
-                      AppDelegate(child: child),
-                    );
-                  },
-                  home: BlocProvider<SplashCubit>(
-                    create: (BuildContext context) =>
-                        SplashCubit()..appStarted(),
-                    child: SplashPage(),
-                  ),
-                  theme: state.appTheme.themeData,
-                  darkTheme: state.appTheme.darkThemeData,
-                  themeMode: state.appTheme.themeMode,
-                  navigatorKey: _appNavigator.navigatorKey,
-                  navigatorObservers: <NavigatorObserver>[_routeObserver],
-                  scaffoldMessengerKey: _appMessenger.messengerKey,
-                  onGenerateRoute: (RouteSettings settings) =>
-                      appRoutes(settings, _appCubit),
-                );
+    return AutoLocalizedApp(
+      child: BlocProvider<AppCubit>(
+        create: (BuildContext context) => _appCubit,
+        child: BlocBuilder<AppCubit, AppState>(
+          bloc: _appCubit,
+          builder: (BuildContext context, AppState state) {
+            return MaterialApp(
+              useInheritedMediaQuery: true,
+              debugShowCheckedModeBanner: false,
+              title: 'sample',
+              supportedLocales: context.supportedLocales,
+              localizationsDelegates: context.localizationsDelegates,
+              builder: (BuildContext context, Widget? child) {
+                final Size size = MediaQuery.of(context).size;
+                _logger.fine('Device size ${size.width} x ${size.height}');
+                return AppDelegate(child: child);
               },
-            ),
-          ),
-        );
-      },
+              home: BlocProvider<SplashCubit>(
+                create: (BuildContext context) => SplashCubit()..appStarted(),
+                child: SplashPage(),
+              ),
+              theme: state.appTheme.themeData,
+              darkTheme: state.appTheme.darkThemeData,
+              themeMode: state.appTheme.themeMode,
+              navigatorKey: _appNavigator.navigatorKey,
+              navigatorObservers: <NavigatorObserver>[_routeObserver],
+              scaffoldMessengerKey: _appMessenger.messengerKey,
+              onGenerateRoute: (RouteSettings settings) =>
+                  appRoutes(settings, _appCubit),
+            );
+          },
+        ),
+      ),
     );
   }
 }

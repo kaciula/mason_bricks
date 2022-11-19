@@ -52,15 +52,22 @@ android {
         versionName flutterVersionName
     }
 
+    // TODO: Generate release keystore
+    signingConfigs {
+        release {
+            storeFile file("key/todo")
+            storePassword 'todo'
+            keyAlias 'todo'
+            keyPassword 'todo'
+        }
+    }
+
     buildTypes {
         debug {
-            applicationIdSuffix ".debug"
             versionNameSuffix "-debug"
         }
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
         }
     }
 }
