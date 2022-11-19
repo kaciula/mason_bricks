@@ -15,7 +15,11 @@ environment:
 #  * an optional prompt phrase used when asking for the variable
 #  * a list of values (enums only)
 vars:
-  name:
+  project_name:
     type: string
-    description: App name
-    prompt: What is the app name?
+    description: Project name
+    prompt: What is the project name?
+  application_id:
+    type: string
+    description: The application id on Android, Bundle ID on iOS and company name on Windows.
+    prompt: What is the application id?
