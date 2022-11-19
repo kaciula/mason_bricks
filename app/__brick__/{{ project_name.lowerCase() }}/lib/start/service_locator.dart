@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
-import 'package:vasile/app/app_messenger.dart';
-import 'package:vasile/app/app_navigator.dart';
-import 'package:vasile/app/cubit/app_cubit.dart';
-import 'package:vasile/infrastructure/local_stores/app_info_store.dart';
-import 'package:vasile/infrastructure/services/crash/crash_service.dart';
-import 'package:vasile/infrastructure/services/fire_service.dart';
-import 'package:vasile/infrastructure/services/log_service.dart';
+import 'package:{{ project_name.snakeCase() }}/app/app_messenger.dart';
+import 'package:{{ project_name.snakeCase() }}/app/app_navigator.dart';
+import 'package:{{ project_name.snakeCase() }}/app/cubit/app_cubit.dart';
+import 'package:{{ project_name.snakeCase() }}/infrastructure/local_stores/app_info_store.dart';
+import 'package:{{ project_name.snakeCase() }}/infrastructure/services/crash/crash_service.dart';
+import 'package:{{ project_name.snakeCase() }}/infrastructure/services/fire_service.dart';
+import 'package:{{ project_name.snakeCase() }}/infrastructure/services/log_service.dart';
 
 GetIt getIt = GetIt.instance;
 

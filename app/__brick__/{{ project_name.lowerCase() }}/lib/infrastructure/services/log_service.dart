@@ -3,8 +3,8 @@ import 'dart:math';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logging/logging.dart';
-import 'package:vasile/app/app_constants.dart';
-import 'package:vasile/infrastructure/services/crash/crash_service.dart';
+import 'package:{{ project_name.snakeCase() }}/app/app_constants.dart';
+import 'package:{{ project_name.snakeCase() }}/infrastructure/services/crash/crash_service.dart';
 
 class LogService {
   LogService(this.crashService);

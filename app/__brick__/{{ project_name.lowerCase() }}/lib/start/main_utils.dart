@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
-import 'package:vasile/infrastructure/services/crash/crash_service.dart';
-import 'package:vasile/infrastructure/services/log_service.dart';
+import 'package:{{ project_name.snakeCase() }}/infrastructure/services/crash/crash_service.dart';
+import 'package:{{ project_name.snakeCase() }}/infrastructure/services/log_service.dart';
 
 import 'service_locator.dart';
 
