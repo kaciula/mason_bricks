@@ -1,7 +1,7 @@
-import 'package:feis/infrastructure/local_stores/app_info_store.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:universal_io/io.dart';
+import 'package:vasile/infrastructure/local_stores/app_info_store.dart';
 
 import 'uncaught_error_handler.dart';
 

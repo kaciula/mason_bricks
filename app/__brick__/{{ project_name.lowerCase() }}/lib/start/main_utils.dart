@@ -1,11 +1,11 @@
-import 'package:{{ project_name.snakeCase() }}/infrastructure/misc/crash/crash_reporter.dart';
-import 'package:{{ project_name.snakeCase() }}/infrastructure/services/log_service.dart';
 import 'package:flutter/services.dart';
+import 'package:vasile/infrastructure/services/crash/crash_service.dart';
+import 'package:vasile/infrastructure/services/log_service.dart';
 
 import 'service_locator.dart';
 
 Future<void> init() async {
-  final CrashReporter crashReporter = getIt<CrashReporter>();
+  final CrashService crashService = getIt<CrashService>();
   final LogService logService = getIt<LogService>();
 
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
@@ -13,5 +13,5 @@ Future<void> init() async {
   ]);
 
   await logService.init();
-  await crashReporter.init();
+  await crashService.init();
 }

@@ -1,15 +1,15 @@
 import 'dart:developer' as developer;
 import 'dart:math';
 
-import 'package:{{ project_name.snakeCase() }}/app/app_constants.dart';
-import 'package:{{ project_name.snakeCase() }}/infrastructure/misc/crash/crash_reporter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logging/logging.dart';
+import 'package:vasile/app/app_constants.dart';
+import 'package:vasile/infrastructure/services/crash/crash_service.dart';
 
 class LogService {
-  LogService(this.crashReporter);
+  LogService(this.crashService);
 
-  final CrashReporter crashReporter;
+  final CrashService crashService;
 
   final List<String> memoryLogs = <String>[];
   bool _keepLogsInMemory = false;
@@ -31,7 +31,7 @@ class LogService {
     final String msg =
         '${record.time.hour}:${record.time.minute}:${record.time.second}.${record.time.millisecond} ${record.loggerName}: ${record.message}';
     if (isProduction) {
-      crashReporter.log(msg);
+      crashService.log(msg);
     } else {
       const String lightGrey = '\x1b[90m';
       String start = lightGrey;
@@ -84,9 +84,9 @@ class LogService {
 
 // ignore: unused_element
 class _LoggingBlocObserver extends BlocObserver {
-  _LoggingBlocObserver(this.crashReporter);
+  _LoggingBlocObserver(this.crashService);
 
-  final CrashReporter crashReporter;
+  final CrashService crashService;
 
   @override
   void onEvent(Bloc<dynamic, dynamic> bloc, Object? event) {
@@ -97,7 +97,7 @@ class _LoggingBlocObserver extends BlocObserver {
   @override
   void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
     super.onError(bloc, error, stackTrace);
-    crashReporter.reportUnexpectedError(
+    crashService.reportUnexpectedError(
       Exception(error.toString()),
       stackTrace,
       '${bloc.runtimeType.toString()} exploded!',
