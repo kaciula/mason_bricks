@@ -1,18 +1,26 @@
 import 'dart:developer' as developer;
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logging/logging.dart';
-import 'package:{{ project_name.snakeCase() }}/app/app_constants.dart';
-import 'package:{{ project_name.snakeCase() }}/infrastructure/services/crash/crash_service.dart';
+import 'package:universal_io/io.dart';
+import 'package:{{ project_name.snakeCase() }}/features/common/data/local/app_info_store.dart';
+import 'package:{{ project_name.snakeCase() }}/services/generic/crash/crash_service.dart';
+
+import 'file_storage_service.dart';
 
 class LogService {
-  LogService(this.crashService);
+  LogService(this.crashService, this.fileStorageService, this.appInfoStore);
 
   final CrashService crashService;
+  final FileStorageService fileStorageService;
+  final AppInfoStore appInfoStore;
 
   final List<String> memoryLogs = <String>[];
   bool _keepLogsInMemory = false;
+  bool _keepLogsInFile = false;
+  late File logFile;
 
   bool get trackLogsInMemory => _keepLogsInMemory;
 
@@ -22,7 +30,21 @@ class LogService {
     memoryLogs.clear();
   }
 
+  bool get trackLogsInFile => _keepLogsInFile;
+
+  set trackLogsInFile(bool isEnabled) {
+    _keepLogsInFile = isEnabled;
+    _setLoggerLevel();
+
+    // Clear log file
+    logFile.writeAsStringSync('');
+
+    appInfoStore.saveTrackLogsInFile(isEnabled);
+  }
+
   Future<void> init() async {
+    _keepLogsInFile = appInfoStore.trackLogsInFile();
+    logFile = fileStorageService.appSupportFile('dev-logs.log');
     _setLoggerLevel();
     Logger.root.onRecord.listen(log);
   }
@@ -30,7 +52,7 @@ class LogService {
   void log(LogRecord record) {
     final String msg =
         '${record.time.hour}:${record.time.minute}:${record.time.second}.${record.time.millisecond} ${record.loggerName}: ${record.message}';
-    if (isProduction) {
+    if (kReleaseMode) {
       crashService.log(msg);
     } else {
       const String lightGrey = '\x1b[90m';
@@ -67,8 +89,12 @@ class LogService {
         time: record.time,
       );
     }
+
     if (_keepLogsInMemory) {
       memoryLogs.add(msg);
+    }
+    if (_keepLogsInFile) {
+      logFile.writeAsStringSync('$msg\n', mode: FileMode.append);
     }
   }
 
@@ -77,8 +103,9 @@ class LogService {
   }
 
   void _setLoggerLevel() {
-    Logger.root.level =
-        (isProduction && !_keepLogsInMemory) ? Level.INFO : Level.ALL;
+    Logger.root.level = (kReleaseMode && !_keepLogsInMemory && !_keepLogsInFile)
+        ? Level.INFO
+        : Level.ALL;
   }
 }
 

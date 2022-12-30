@@ -1,15 +1,10 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:universal_io/io.dart';
-import 'package:{{ project_name.snakeCase() }}/infrastructure/local_stores/app_info_store.dart';
 
 import 'uncaught_error_handler.dart';
 
 class UncaughtErrorHandlerRelease extends UncaughtErrorHandler {
-  UncaughtErrorHandlerRelease(this.appInfoStore);
-
-  final AppInfoStore appInfoStore;
-
   @override
   Future<void> handleFlutterError(FlutterErrorDetails details) async {
     final String sException = details.exceptionAsString();

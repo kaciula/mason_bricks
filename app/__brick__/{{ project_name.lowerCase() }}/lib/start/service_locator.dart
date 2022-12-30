@@ -3,10 +3,11 @@ import 'package:get_it/get_it.dart';
 import 'package:{{ project_name.snakeCase() }}/app/app_messenger.dart';
 import 'package:{{ project_name.snakeCase() }}/app/app_navigator.dart';
 import 'package:{{ project_name.snakeCase() }}/app/cubit/app_cubit.dart';
-import 'package:{{ project_name.snakeCase() }}/infrastructure/local_stores/app_info_store.dart';
-import 'package:{{ project_name.snakeCase() }}/infrastructure/services/crash/crash_service.dart';
-import 'package:{{ project_name.snakeCase() }}/infrastructure/services/fire_service.dart';
-import 'package:{{ project_name.snakeCase() }}/infrastructure/services/log_service.dart';
+import 'package:{{ project_name.snakeCase() }}/features/common/data/local/app_info_store.dart';
+import 'package:{{ project_name.snakeCase() }}/services/custom/firebase/fire_service.dart';
+import 'package:{{ project_name.snakeCase() }}/services/generic/crash/crash_service.dart';
+import 'package:{{ project_name.snakeCase() }}/services/generic/file_storage_service.dart';
+import 'package:{{ project_name.snakeCase() }}/services/generic/log_service.dart';
 
 GetIt getIt = GetIt.instance;
 
@@ -19,9 +20,12 @@ Future<void> registerInstances() async {
   getIt.registerSingleton(fireService);
   // We need to initialize Firebase here because the connectors constructors need this
   await fireService.init();
-  final CrashService crashService = CrashService(appInfoStore);
+  final CrashService crashService = CrashService();
   getIt.registerSingleton(crashService);
-  final LogService logService = LogService(crashService);
+  final FileStorageService fileStorageService = FileStorageService();
+  getIt.registerSingleton(fileStorageService);
+  final LogService logService =
+      LogService(crashService, fileStorageService, appInfoStore);
   getIt.registerSingleton(logService);
   getIt.registerSingleton(RouteObserver());
   getIt.registerSingleton(AppMessenger());

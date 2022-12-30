@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:{{ project_name.snakeCase() }}/app/app.dart';
-import 'package:{{ project_name.snakeCase() }}/infrastructure/services/crash/crash_service.dart';
+import 'package:{{ project_name.snakeCase() }}/services/generic/crash/crash_service.dart';
 import 'package:flutter/material.dart';
 
 import 'main_utils.dart';
