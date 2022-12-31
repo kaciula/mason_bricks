@@ -33,3 +33,13 @@ vars:
     description: Add Firebase functionality condition
     default: true
     prompt: Use Firebase package (Crashlytics etc.)?
+  useEn:
+    type: boolean
+    description: Add English language support
+    default: true
+    prompt: Add English language support?
+  useRo:
+    type: boolean
+    description: Add Romanian language support
+    default: false
+    prompt: Add Romanian language support?
