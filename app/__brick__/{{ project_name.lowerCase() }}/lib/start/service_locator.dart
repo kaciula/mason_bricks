@@ -4,6 +4,7 @@ import 'package:{{ projectName.snakeCase() }}/app/app_messenger.dart';
 import 'package:{{ projectName.snakeCase() }}/app/app_navigator.dart';
 import 'package:{{ projectName.snakeCase() }}/app/cubit/app_cubit.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/data/local/app_info_store.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/data/remote/remote_data_store.dart';
 import 'package:{{ projectName.snakeCase() }}/services/custom/firebase/fire_service.dart';
 import 'package:{{ projectName.snakeCase() }}/services/generic/crash/crash_service.dart';
 import 'package:{{ projectName.snakeCase() }}/services/generic/file_storage_service.dart';
@@ -30,6 +31,9 @@ Future<void> registerInstances() async {
   getIt.registerSingleton(RouteObserver());
   getIt.registerSingleton(AppMessenger());
   getIt.registerSingleton(AppNavigator());
+
+  {{#useDio}}getIt.registerSingleton(
+      RemoteDataStore(crashService, logService, appInfoStore));{{/useDio}}
 
   // Keep this at the end because it gets other dependencies injected into it
   getIt.registerSingleton(AppCubit());

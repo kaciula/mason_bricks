@@ -1,0 +1,29 @@
+import 'package:{{ projectName.snakeCase() }}/features/common/data/local/app_info_store.dart';
+import 'package:{{ projectName.snakeCase() }}/services/generic/crash/crash_service.dart';
+import 'package:{{ projectName.snakeCase() }}/services/generic/log_service.dart';
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:logging/logging.dart';
+
+import 'logging_interceptor.dart';
+import 'retry_on_connection_change_interceptor.dart';
+
+class RemoteDataStore {
+  RemoteDataStore(
+      this.crashService, LogService logService, AppInfoStore appInfoStore) {
+    _dio = Dio();
+    final trackLogsInFile = appInfoStore.trackLogsInFile();
+    if (!kReleaseMode || trackLogsInFile) {
+      _dio.interceptors.add(
+        LoggingInterceptor(logPrint: logService.logPrint, showCURL: false),
+      );
+    }
+    _dio.interceptors.add(RetryOnConnectionChangeInterceptor(dio: _dio));
+  }
+
+  final CrashService crashService;
+  late final Dio _dio;
+}
+
+// ignore: unused_element
+final Logger _logger = Logger('RemoteDataStore');
