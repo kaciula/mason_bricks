@@ -1,6 +1,6 @@
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
-import 'package:{{ project_name.snakeCase() }}/app/app_constants.dart';
+import 'package:{{ projectName.snakeCase() }}/app/app_constants.dart';
 
 import 'uncaught_error_handler.dart';
 import 'uncaught_error_handler_debug.dart';

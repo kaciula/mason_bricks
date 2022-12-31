@@ -1,4 +1,4 @@
-import 'package:{{ project_name.snakeCase() }}/features/common/utils/generic/flutter_extensions.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/utils/generic/flutter_extensions.dart';
 import 'package:flutter/widgets.dart';
 
 class PageUtils {

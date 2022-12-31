@@ -1,5 +1,5 @@
-import 'package:{{ project_name.snakeCase() }}/app/app_strings.al.dart';
-import 'package:{{ project_name.snakeCase() }}/app/app_styles.dart';
+import 'package:{{ projectName.snakeCase() }}/app/app_strings.al.dart';
+import 'package:{{ projectName.snakeCase() }}/app/app_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../../utils/generic/refresh_state.dart';

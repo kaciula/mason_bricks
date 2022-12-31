@@ -1,4 +1,4 @@
-import 'package:{{ project_name.snakeCase() }}/app/app.dart';
+import 'package:{{ projectName.snakeCase() }}/app/app.dart';
 import 'package:flutter/material.dart';
 
 import 'main_utils.dart';

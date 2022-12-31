@@ -2,11 +2,11 @@ import 'package:auto_localized/auto_localized.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logging/logging.dart';
-import 'package:{{ project_name.snakeCase() }}/app/app_strings.al.dart';
-import 'package:{{ project_name.snakeCase() }}/features/common/pages/splash/cubit/splash_cubit.dart';
-import 'package:{{ project_name.snakeCase() }}/features/common/pages/splash/splash_page.dart';
-import 'package:{{ project_name.snakeCase() }}/features/common/utils/generic/page_utils.dart';
-import 'package:{{ project_name.snakeCase() }}/start/service_locator.dart';
+import 'package:{{ projectName.snakeCase() }}/app/app_strings.al.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/pages/splash/cubit/splash_cubit.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/pages/splash/splash_page.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/utils/generic/page_utils.dart';
+import 'package:{{ projectName.snakeCase() }}/start/service_locator.dart';
 import 'package:universal_io/io.dart';
 
 import 'app_messenger.dart';

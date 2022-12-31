@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logging/logging.dart';
 import 'package:universal_io/io.dart';
-import 'package:{{ project_name.snakeCase() }}/features/common/data/local/app_info_store.dart';
-import 'package:{{ project_name.snakeCase() }}/services/generic/crash/crash_service.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/data/local/app_info_store.dart';
+import 'package:{{ projectName.snakeCase() }}/services/generic/crash/crash_service.dart';
 
 import 'file_storage_service.dart';
 

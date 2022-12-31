@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:{{ project_name.snakeCase() }}/features/common/widgets/custom/templates/refresh_container.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/widgets/custom/templates/refresh_container.dart';
 import 'package:logging/logging.dart';
 
 import 'cubit/splash_cubit.dart';

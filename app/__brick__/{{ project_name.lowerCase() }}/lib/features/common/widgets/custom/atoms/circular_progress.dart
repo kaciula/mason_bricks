@@ -1,4 +1,4 @@
-import 'package:{{ project_name.snakeCase() }}/app/app_styles.dart';
+import 'package:{{ projectName.snakeCase() }}/app/app_styles.dart';
 import 'package:flutter/material.dart';
 
 import '../../generic/atoms/generic_circular_progress.dart';

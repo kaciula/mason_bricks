@@ -1,7 +1,7 @@
-import 'package:{{ project_name.snakeCase() }}/app/app_constants.dart';
-import 'package:{{ project_name.snakeCase() }}/app/app_navigator.dart';
-import 'package:{{ project_name.snakeCase() }}/features/common/utils/generic/flutter_extensions.dart';
-import 'package:{{ project_name.snakeCase() }}/start/service_locator.dart';
+import 'package:{{ projectName.snakeCase() }}/app/app_constants.dart';
+import 'package:{{ projectName.snakeCase() }}/app/app_navigator.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/utils/generic/flutter_extensions.dart';
+import 'package:{{ projectName.snakeCase() }}/start/service_locator.dart';
 import 'package:flutter/material.dart';
 
 import 'app_strings.al.dart';
