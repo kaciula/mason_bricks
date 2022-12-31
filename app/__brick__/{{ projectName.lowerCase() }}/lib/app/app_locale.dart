@@ -24,7 +24,8 @@ class AppLocale {
   }
 }
 
-const Locale englishLocale = Locale('en');
+{{#useEn}}const Locale englishLocale = Locale('en');{{/useEn}}
+{{#useRo}}const Locale romanianLocale = Locale('ro');{{/useRo}}
 
 // ignore: unused_element
 final Logger _logger = Logger('AppLocale');

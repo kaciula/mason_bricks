@@ -1,4 +1,3 @@
-import 'package:{{ projectName.snakeCase() }}/app/app_constants.dart';
 import 'package:{{ projectName.snakeCase() }}/app/app_navigator.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/utils/generic/flutter_extensions.dart';
 import 'package:{{ projectName.snakeCase() }}/start/service_locator.dart';
@@ -29,11 +28,11 @@ class AppMessenger {
     messengerState.showSnackBar(
       SnackBar(
         content: Text(errorMsg),
-        duration: errorDetails != null && showErrorDetails
+        duration: errorDetails != null && _showDetailedErrorDetails
             ? const Duration(milliseconds: 10000)
             : _snackBarDisplayDuration,
         backgroundColor: messengerState.context.errorColor,
-        action: errorDetails != null && showErrorDetails
+        action: errorDetails != null && _showDetailedErrorDetails
             ? SnackBarAction(
                 label: Strings.details.get(),
                 textColor: AppColors.black,
@@ -53,7 +52,7 @@ class AppMessenger {
           color: AppColors.red,
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(AppInsets.i16),
+              padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
                   Text(
@@ -61,7 +60,7 @@ class AppMessenger {
                     textAlign: TextAlign.center,
                     style: TextStyle(color: AppColors.white),
                   ),
-                  const SizedBox(height: AppInsets.i8),
+                  const SizedBox(height: 8),
                   Text(errorDetails, style: TextStyle(color: AppColors.white)),
                 ],
               ),
@@ -72,3 +71,6 @@ class AppMessenger {
     );
   }
 }
+
+// todo: Hide error details when app live
+const bool _showDetailedErrorDetails = true;

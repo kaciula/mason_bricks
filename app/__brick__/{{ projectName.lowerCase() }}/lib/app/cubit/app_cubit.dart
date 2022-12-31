@@ -6,19 +6,19 @@ import 'app_state.dart';
 import 'app_theme.dart';
 
 class AppCubit extends Cubit<AppState> {
-  AppCubit() : super(_initialState());
+  AppCubit() : super(_initial());
+
+  static AppState _initial() {
+    return AppState.initial(
+      AppTheme.initial(ThemeMode.light),
+    );
+  }
 
   void appStarted() {}
 
   void appResumed() {}
 
   void appPaused() {}
-
-  static AppState _initialState() {
-    return AppState.initial(
-      AppTheme.initial(ThemeMode.light),
-    );
-  }
 }
 
 // ignore: unused_element
