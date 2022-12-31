@@ -5,7 +5,7 @@ import 'package:{{ projectName.snakeCase() }}/app/app_navigator.dart';
 import 'package:{{ projectName.snakeCase() }}/app/cubit/app_cubit.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/data/local/app_info_store.dart';
 {{#useDio}}import 'package:{{ projectName.snakeCase() }}/features/common/data/remote/remote_data_store.dart';{{/useDio}}
-import 'package:{{ projectName.snakeCase() }}/services/custom/firebase/fire_service.dart';
+{{#useFirebase}}import 'package:{{ projectName.snakeCase() }}/services/custom/firebase/fire_service.dart';{{/useFirebase}}
 import 'package:{{ projectName.snakeCase() }}/services/generic/crash/crash_service.dart';
 import 'package:{{ projectName.snakeCase() }}/services/generic/file_storage_service.dart';
 import 'package:{{ projectName.snakeCase() }}/services/generic/log_service.dart';
@@ -17,10 +17,9 @@ Future<void> registerInstances() async {
   getIt.registerSingleton<AppInfoStore>(appInfoStore);
   await appInfoStore.init();
 
-  final FireService fireService = FireService();
+  {{#useFirebase}}final FireService fireService = FireService();
   getIt.registerSingleton(fireService);
-  // We need to initialize Firebase here because the connectors constructors need this
-  await fireService.init();
+  await fireService.init();{{/useFirebase}}
   final CrashService crashService = CrashService();
   getIt.registerSingleton(crashService);
   final FileStorageService fileStorageService = FileStorageService();

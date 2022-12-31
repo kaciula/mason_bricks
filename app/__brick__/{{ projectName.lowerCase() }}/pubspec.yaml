@@ -21,10 +21,10 @@ dependencies:
   path: ^1.8.2
   http_parser: ^4.0.2{{/useDio}}
 
-  # Firebase
+{{#useFirebase}}  # Firebase
   firebase_core: ^1.24.0
   firebase_crashlytics: ^2.9.0
-  firebase_analytics: ^9.3.8
+  firebase_analytics: ^9.3.8{{/useFirebase}}
 
   # UI
   auto_localized: ^1.3.1

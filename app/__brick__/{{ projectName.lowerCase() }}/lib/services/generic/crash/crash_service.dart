@@ -1,16 +1,15 @@
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+{{#useFirebase}}import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:{{ projectName.snakeCase() }}/app/app_constants.dart';
-
-import 'uncaught_error_handler.dart';
+import 'uncaught_error_handler_release.dart';{{/useFirebase}}
 import 'uncaught_error_handler_debug.dart';
-import 'uncaught_error_handler_release.dart';
+import 'uncaught_error_handler.dart';
 
 class CrashService {
   late UncaughtErrorHandler _uncaughtErrorHandler;
 
   Future<void> init() async {
-    if (isProduction) {
+    {{#useFirebase}}if (isProduction) {
       _uncaughtErrorHandler = UncaughtErrorHandlerRelease();
       FlutterError.onError = (FlutterErrorDetails details) async {
         await _uncaughtErrorHandler.handleFlutterError(details);
@@ -18,7 +17,8 @@ class CrashService {
     } else {
       _uncaughtErrorHandler = UncaughtErrorHandlerDebug();
       await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);
-    }
+    }{{/useFirebase}}
+    {{^useFirebase}}_uncaughtErrorHandler = UncaughtErrorHandlerDebug();{{/useFirebase}}
   }
 
   Future<void> handleZonedError(dynamic exception, dynamic stack) async {

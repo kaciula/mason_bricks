@@ -28,3 +28,8 @@ vars:
     description: Add dio functionality condition
     default: false
     prompt: Use dio package?
+  useFirebase:
+    type: boolean
+    description: Add Firebase functionality condition
+    default: true
+    prompt: Use Firebase package (Crashlytics etc.)?
