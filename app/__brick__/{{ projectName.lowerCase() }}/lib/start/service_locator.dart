@@ -24,6 +24,7 @@ Future<void> registerInstances() async {
   getIt.registerSingleton(crashService);
   final FileStorageService fileStorageService = FileStorageService();
   getIt.registerSingleton(fileStorageService);
+  await fileStorageService.init();
   final LogService logService =
       LogService(crashService, fileStorageService, appInfoStore);
   getIt.registerSingleton(logService);
