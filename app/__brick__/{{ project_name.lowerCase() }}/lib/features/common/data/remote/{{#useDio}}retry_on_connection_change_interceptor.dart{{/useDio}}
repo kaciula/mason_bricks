@@ -3,7 +3,7 @@ import 'package:universal_io/io.dart';
 
 import 'request_retrier.dart';
 
-// Workaround for
+// Workaround for http connection error
 class RetryOnConnectionChangeInterceptor extends Interceptor {
   RetryOnConnectionChangeInterceptor({required this.dio});
 

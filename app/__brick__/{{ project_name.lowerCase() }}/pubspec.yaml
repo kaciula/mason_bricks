@@ -16,7 +16,7 @@ dependencies:
   kt_dart: ^1.0.0
   logging: ^1.1.0
   universal_io: ^2.0.4
-  intl: ^0.17.0
+  intl: ^0.17.0 
 {{#useDio}}  dio: ^4.0.6
   path: ^1.8.2
   http_parser: ^4.0.2{{/useDio}}

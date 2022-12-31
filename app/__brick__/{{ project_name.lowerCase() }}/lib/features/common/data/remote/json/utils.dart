@@ -1,4 +1,4 @@
-import 'package:dio/dio.dart';
+{{#useDio}}import 'package:dio/dio.dart';
 
 String mapErrorDetails(DioError e) {
   String errorDetails = e.message;
@@ -13,7 +13,7 @@ String mapErrorDetails(DioError e) {
     errorDetails += '\n\n${e.stackTrace}';
   }
   return errorDetails;
-}
+}{{/useDio}}
 
 String mapGeneralErrorDetails(dynamic e, dynamic stackTrace) {
   String errorDetails = e.toString();
