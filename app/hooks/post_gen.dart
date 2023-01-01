@@ -8,6 +8,7 @@ Future<void> run(HookContext context) async {
     await _configureFirebase(context);
   }
   await _formatProject(context);
+  await _runGit(context);
 }
 
 Future<void> _runFlutterPubCommands(final HookContext context) async {
@@ -61,6 +62,42 @@ Future<void> _formatProject(final HookContext context) async {
   );
   stdout.write(result.stdout);
   stderr.write(result.stderr);
+  progress.complete();
+}
+
+Future<void> _runGit(final HookContext context) async {
+  final progress = context.logger.progress('Set up git');
+  var result = await Process.run(
+    'git',
+    ['-C', _projectDirectory(context), 'init'],
+    workingDirectory: _projectDirectory(context),
+  );
+  stdout.write(result.stdout);
+  stderr.write(result.stderr);
+
+  result = await Process.run(
+    'git',
+    ['-C', _projectDirectory(context), 'add', '.'],
+    workingDirectory: _projectDirectory(context),
+  );
+  stdout.write(result.stdout);
+  stderr.write(result.stderr);
+
+  result = await Process.run(
+    'git',
+    [
+      '-C',
+      _projectDirectory(context),
+      'commit',
+      '-a',
+      '-m',
+      '"Initial commit"'
+    ],
+    workingDirectory: _projectDirectory(context),
+  );
+  stdout.write(result.stdout);
+  stderr.write(result.stderr);
+
   progress.complete();
 }
 
