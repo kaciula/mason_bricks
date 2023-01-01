@@ -1,0 +1,29 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:hive_flutter/hive_flutter.dart';
+
+import 'secure_store.dart';
+
+class LocalStore {
+  LocalStore(this.secureStore);
+
+  final SecureStore secureStore;
+
+  Future<void> init({required bool isFirstTime}) async {
+    if (isFirstTime) {
+      // The encryption key survives app reinstalls
+      await secureStore.deleteEncryptionKey();
+    }
+
+    await Hive.initFlutter();
+
+    late List<int> encryptionKey;
+    if (!await secureStore.hasEncryptionKey()) {
+      encryptionKey = Hive.generateSecureKey();
+      await secureStore.persistEncryptionKey(base64UrlEncode(encryptionKey));
+    } else {
+      encryptionKey = base64Url.decode(secureStore.encryptionKey!);
+    }
+  }
+}

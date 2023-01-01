@@ -28,11 +28,21 @@ vars:
     description: Add dio functionality condition
     default: false
     prompt: Use dio package?
+  useJson:
+    type: boolean
+    description: Add json functionality condition
+    default: true
+    prompt: Use json package?
   useFirebase:
     type: boolean
     description: Add Firebase functionality condition
     default: true
     prompt: Use Firebase package (Crashlytics etc.)?
+  useHive:
+    type: boolean
+    description: Add hive functionality condition
+    default: true
+    prompt: Use hive package?
   useEn:
     type: boolean
     description: Add English language support

@@ -4,6 +4,8 @@ import 'package:{{ projectName.snakeCase() }}/app/app_messenger.dart';
 import 'package:{{ projectName.snakeCase() }}/app/app_navigator.dart';
 import 'package:{{ projectName.snakeCase() }}/app/cubit/app_cubit.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/data/local/app_info_store.dart';
+{{#useHive}}import 'package:{{ projectName.snakeCase() }}/features/common/data/local/secure_store.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/data/local/local_store.dart';{{/useHive}}
 {{#useDio}}import 'package:{{ projectName.snakeCase() }}/features/common/data/remote/remote_data_store.dart';{{/useDio}}
 {{#useFirebase}}import 'package:{{ projectName.snakeCase() }}/services/custom/firebase/fire_service.dart';{{/useFirebase}}
 import 'package:{{ projectName.snakeCase() }}/services/generic/crash/crash_service.dart';
@@ -28,6 +30,12 @@ Future<void> registerInstances() async {
   final LogService logService =
       LogService(crashService, fileStorageService, appInfoStore);
   getIt.registerSingleton(logService);
+  {{#useHive}}final SecureStore secureStore = SecureStore();
+  getIt.registerSingleton(secureStore);
+  final LocalStore localStore = LocalStore(secureStore);
+  getIt.registerSingleton(localStore);
+  final AppInfo appInfo = await appInfoStore.get();
+  await localStore.init(isFirstTime: appInfo.isFirstTime);{{/useHive}}
   getIt.registerSingleton(RouteObserver());
   getIt.registerSingleton(AppMessenger());
   getIt.registerSingleton(AppNavigator());
