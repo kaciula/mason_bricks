@@ -17,6 +17,9 @@ dependencies:
   logging: ^1.1.0
   universal_io: ^2.0.4
   intl: ^0.17.0 # every version of flutter_localizations from sdk depends on intl 0.17.0
+  multiple_result: ^4.0.0
+  sized_context: ^1.0.0+1
+  gap: ^2.0.1
 {{#useDio}}  dio: ^4.0.6
   path: ^1.8.2 # every version of flutter_test from sdk depends on path 1.8.2
   http_parser: ^4.0.2{{/useDio}}
