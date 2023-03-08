@@ -8,11 +8,11 @@ class AppNavigator {
   get context => navigatorKey.currentContext;
 
   // Common
-  Future<void> goBack() async {
+  Future<void> pop() async {
     navigatorKey.currentState!.pop();
   }
 
-  Future<void> sendBack(dynamic result) async {
+  Future<void> popBack(dynamic result) async {
     navigatorKey.currentState!.pop(result);
   }
 

@@ -111,5 +111,4 @@ class GenericRefreshContainer extends StatelessWidget {
   }
 }
 
-// LATER: Hide error details when app live
 const bool _showDetailedErrorDetails = true;

@@ -23,9 +23,5 @@ class AppTheme with _$AppTheme {
     );
   }
 
-  ThemeData get darkThemeData {
-    return ThemeData(
-      brightness: Brightness.dark,
-    );
-  }
+  ThemeData get darkThemeData => themeData;
 }
