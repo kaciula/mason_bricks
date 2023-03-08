@@ -1,7 +1,6 @@
-import 'package:{{ projectName.snakeCase() }}/app/app_navigator.dart';
-import 'package:{{ projectName.snakeCase() }}/features/common/utils/generic/flutter_extensions.dart';
-import 'package:{{ projectName.snakeCase() }}/start/service_locator.dart';
 import 'package:flutter/material.dart';
+import 'package:{{ projectName.snakeCase() }}/app/app_navigator.dart';
+import 'package:{{ projectName.snakeCase() }}/start/service_locator.dart';
 
 import 'app_strings.al.dart';
 import 'app_styles.dart';
@@ -31,7 +30,7 @@ class AppMessenger {
         duration: errorDetails != null && _showDetailedErrorDetails
             ? const Duration(milliseconds: 10000)
             : _snackBarDisplayDuration,
-        backgroundColor: messengerState.context.errorColor,
+        backgroundColor: AppColors.red,
         action: errorDetails != null && _showDetailedErrorDetails
             ? SnackBarAction(
                 label: Strings.details.get(),

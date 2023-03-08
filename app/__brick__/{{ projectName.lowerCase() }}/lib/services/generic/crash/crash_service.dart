@@ -1,7 +1,5 @@
 {{#useFirebase}}import 'package:firebase_crashlytics/firebase_crashlytics.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:{{ projectName.snakeCase() }}/app/app_constants.dart';
 import 'uncaught_error_handler_release.dart';{{/useFirebase}}
 import 'uncaught_error_handler_debug.dart';
 import 'uncaught_error_handler.dart';

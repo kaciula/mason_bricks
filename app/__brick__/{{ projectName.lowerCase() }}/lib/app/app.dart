@@ -5,7 +5,7 @@ import 'package:logging/logging.dart';
 import 'package:{{ projectName.snakeCase() }}/app/app_strings.al.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/pages/splash/cubit/splash_cubit.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/pages/splash/splash_page.dart';
-import 'package:{{ projectName.snakeCase() }}/features/common/utils/generic/page_utils.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/utils/generic/build_context_extension.dart';
 import 'package:{{ projectName.snakeCase() }}/start/service_locator.dart';
 import 'package:universal_io/io.dart';
 
@@ -15,14 +15,14 @@ import 'app_routes.dart';
 import 'cubit/app_cubit.dart';
 import 'cubit/app_state.dart';
 
-class ThisApp extends StatefulWidget {
-  const ThisApp({Key? key}) : super(key: key);
+class MainApp extends StatefulWidget {
+  const MainApp({Key? key}) : super(key: key);
 
   @override
-  ThisAppState createState() => ThisAppState();
+  MainAppState createState() => MainAppState();
 }
 
-class ThisAppState extends State<ThisApp> {
+class MainAppState extends State<MainApp> {
   final AppCubit _appCubit = getIt<AppCubit>();
   final AppNavigator _appNavigator = getIt<AppNavigator>();
   final AppMessenger _appMessenger = getIt<AppMessenger>();
@@ -108,7 +108,7 @@ class AppDelegateState extends State<AppDelegate> with WidgetsBindingObserver {
       onTap: () {
         // Dismiss the keyboard when any tap happens outside a TextField
         if (Platform.isIOS) {
-          PageUtils.hideKeyboard(context);
+          context.hideKeyboard();
         }
       },
       child: widget.child,
