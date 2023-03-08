@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/utils/generic/string_extension.dart';
 
 abstract class UncaughtErrorHandler {
   Future<void> handleFlutterError(FlutterErrorDetails details);
@@ -10,4 +11,19 @@ abstract class UncaughtErrorHandler {
       {bool? killApp});
 
   Future<void> log(String msg);
+}
+
+bool shouldKillApp(String sException) {
+  return !sException.containsIgnoreCase('Failed to load') &&
+      !sException.containsIgnoreCase('Codec failed to produce an image') &&
+      !sException.containsIgnoreCase('VideoError') &&
+      !sException.containsIgnoreCase('HttpException') &&
+      !sException.containsIgnoreCase(
+          'Bad state: Stream has already been listened to') &&
+      !sException.containsIgnoreCase('Invalid image data') &&
+      !sException.containsIgnoreCase('NetworkImage is an empty file');
+}
+
+bool shouldReportException(String sException) {
+  return !sException.containsIgnoreCase('Failed to load');
 }

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'dart:async';
+
 import 'package:{{ projectName.snakeCase() }}/app/app.dart';
 import 'package:{{ projectName.snakeCase() }}/services/generic/crash/crash_service.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +15,17 @@ Future<void> main() async {
   await registerInstances();
   await init();
 
-  startApp();
+  const Widget app = MainApp();
+  if (kReleaseMode) {
+    runAppInReleaseMode(app);
+  } else {
+    runApp(app);
+  }
 }
 
-void startApp() {
+void runAppInReleaseMode(Widget app) {
   runZonedGuarded<Future<void>>(() async {
-    runApp(const ThisApp());
+    runApp(app);
   }, (Object error, StackTrace stack) async {
     await getIt<CrashService>().handleZonedError(error, stack);
   });

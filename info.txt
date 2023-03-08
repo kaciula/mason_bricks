@@ -1,5 +1,6 @@
 Add brick to global repository on the computer
 mason add -g mybrickname --git-url https://github.com/kaciula/mason_bricks --git-path mybrickpath
+mason add -g app --git-url https://github.com/kaciula/mason_bricks --git-path app
 
 Test brick implementation
 mason remove -g app
