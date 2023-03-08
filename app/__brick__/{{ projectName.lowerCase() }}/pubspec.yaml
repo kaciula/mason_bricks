@@ -11,50 +11,50 @@ dependencies:
 
   # Core
   get_it: ^7.2.0
-  flutter_bloc: ^8.1.1
+  flutter_bloc: ^8.1.2
   freezed_annotation: ^2.2.0
   kt_dart: ^1.0.0
-  logging: ^1.1.0
-  universal_io: ^2.0.4
+  logging: ^1.1.1
+  universal_io: ^2.2.0
   intl: ^0.17.0 # every version of flutter_localizations from sdk depends on intl 0.17.0
   multiple_result: ^4.0.0
   sized_context: ^1.0.0+1
   gap: ^2.0.1
-{{#useDio}}  dio: ^4.0.6
+{{#useDio}}  dio: ^5.0.1
   path: ^1.8.2 # every version of flutter_test from sdk depends on path 1.8.2
   http_parser: ^4.0.2{{/useDio}}
 
 {{#useFirebase}}  # Firebase
-  firebase_core: ^2.7.0
-  firebase_crashlytics: ^3.0.15
-  firebase_analytics: ^10.1.4{{/useFirebase}}
+  firebase_core: ^2.7.1
+  firebase_crashlytics: ^3.0.16
+  firebase_analytics: ^10.1.5{{/useFirebase}}
 
   # UI
-  auto_localized: ^1.3.1
+  auto_localized: ^1.3.2
   flutter_svg: ^1.0.3
   flutter_svg_provider: ^1.0.3
   extended_image: ^7.0.2
 
   # Services
-  shared_preferences: ^2.0.15
-  package_info_plus: ^3.0.2
-  path_provider: ^2.0.11
-{{#useHive}}  flutter_secure_storage: ^6.1.0
+  shared_preferences: ^2.0.18
+  package_info_plus: ^3.0.3
+  path_provider: ^2.0.13
+{{#useHive}}  flutter_secure_storage: ^8.0.0
   hive: ^2.2.3
   hive_flutter: ^1.1.0{{/useHive}}
-{{#useJson}}  json_annotation: ^4.7.0{{/useJson}}
+{{#useJson}}  json_annotation: ^4.8.0{{/useJson}}
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  build_runner: ^2.3.3
+  build_runner: ^2.3.3 # build_runner >=2.4.0 which requires SDK version >=3.0.0-134.0.dev <4.0.0
   freezed: ^2.3.2
 {{#useHive}}  hive_generator: ^2.0.0{{/useHive}}
-{{#useJson}}  json_serializable: ^6.5.4{{/useJson}}
+{{#useJson}}  json_serializable: ^6.6.1{{/useJson}}
   auto_localized_generator: ^1.3.2
   flutter_lints: ^2.0.1
-  flutter_launcher_icons: ^0.11.0
+  flutter_launcher_icons: ^0.12.0
 
 flutter:
   uses-material-design: true
@@ -64,8 +64,8 @@ flutter_icons:
   android: true
   ios: true
   image_path_android: "resources/app_icon/app_icon.png"
-  adaptive_icon_background: "resources/app_icon/app_icon_bg.png"
-  adaptive_icon_foreground: "resources/app_icon/app_icon_transparent.png"
+  adaptive_icon_background: "#4F62ED"
+  adaptive_icon_foreground: "resources/app_icon/app_icon_adaptive.png"
   image_path_ios: "resources/app_icon/app_icon.png"
   remove_alpha_ios: true
 
