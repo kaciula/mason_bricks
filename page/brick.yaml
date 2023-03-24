@@ -19,3 +19,8 @@ vars:
     type: string
     description: Page name
     prompt: What is the page name?
+  useArgs:
+    type: boolean
+    description: Use Args
+    default: false
+    prompt: Use Args?

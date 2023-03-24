@@ -39,5 +39,7 @@ class _{{ name.pascalCase() }}PageState extends State<{{ name.pascalCase() }}Pag
   {{ name.pascalCase() }}Cubit get _cubit => context.read<{{ name.pascalCase() }}Cubit>();
 }
 
+ {{#useArgs}}class {{ name.pascalCase() }}Args { }{{/useArgs}}
+
 // ignore: unused_element
 final Logger _logger = Logger('{{ name.pascalCase() }}Page');
