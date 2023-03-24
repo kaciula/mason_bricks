@@ -15,13 +15,15 @@ class {{ name.pascalCase() }} extends StatefulWidget {
 }
 
 class _{{ name.pascalCase() }}State extends State<{{ name.pascalCase() }}> {
+  late final {{ name.pascalCase() }}Cubit _cubit;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider<{{ name.pascalCase() }}Cubit>(
       create: (BuildContext context) {
-        final {{ name.pascalCase() }}Cubit cubit = {{ name.pascalCase() }}Cubit();
-        widget.controller?.setCubit(cubit);
-        return cubit;
+        _cubit = {{ name.pascalCase() }}Cubit();
+        widget.controller?.setCubit(_cubit);
+        return _cubit;
       },
       child: Builder(
           builder: (BuildContext context) => BlocBuilder<{{ name.pascalCase() }}Cubit, {{ name.pascalCase() }}State>(
@@ -37,9 +39,6 @@ class _{{ name.pascalCase() }}State extends State<{{ name.pascalCase() }}> {
     _logger.info('rebuild state=$state');
     return Container();
   }
-
-  // ignore: unused_element
-  {{ name.pascalCase() }}Cubit _cubit(BuildContext context) => context.read<{{ name.pascalCase() }}Cubit>();
 }
 
 class {{ name.pascalCase() }}Controller {
