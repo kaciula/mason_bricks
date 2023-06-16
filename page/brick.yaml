@@ -24,3 +24,8 @@ vars:
     description: Use Args
     default: false
     prompt: Use Args?
+  trackPageAnalytics:
+    type: boolean
+    description: Track each page in Analytics by its route name
+    default: false
+    prompt: Track each page in Analytics by its route name?

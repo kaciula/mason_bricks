@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logging/logging.dart';
+{{#trackPageAnalytics}}import 'package:todo/services/generic/analytics_service.dart';
+import 'package:todo/start/service_locator.dart';{{/trackPageAnalytics}}
 
 import 'cubit/{{ name.snakeCase() }}_cubit.dart';
 import 'cubit/{{ name.snakeCase() }}_state.dart';
@@ -15,6 +17,12 @@ class {{ name.pascalCase() }}Page extends StatefulWidget {
 }
 
 class _{{ name.pascalCase() }}PageState extends State<{{ name.pascalCase() }}Page> {
+  {{#trackPageAnalytics}}@override
+  void initState() {
+    super.initState();
+    getIt<AnalyticsService>().logScreen({{ name.pascalCase() }}Page.routeName);
+  }{{/trackPageAnalytics}}
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<{{ name.pascalCase() }}Cubit, {{ name.pascalCase() }}State>(
