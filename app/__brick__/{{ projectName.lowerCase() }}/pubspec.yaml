@@ -34,6 +34,7 @@ dependencies:
   flutter_svg: ^2.0.7
   flutter_svg_provider: ^1.0.6
   extended_image: ^7.0.2
+  flutter_native_splash: ^2.3.2
 
   # Services
   shared_preferences: ^2.2.1
@@ -69,8 +70,8 @@ flutter_icons:
   image_path_ios: "resources/app_icon/app_icon.png"
   remove_alpha_ios: true
 
-# flutter pub run flutter_native_splash:create
-# flutter pub run flutter_native_splash:remove
+# dart run flutter_native_splash:create
+# dart run flutter_native_splash:remove
 flutter_native_splash:
   color: "#F6F6F6"
 # Spider used to generate asset fields

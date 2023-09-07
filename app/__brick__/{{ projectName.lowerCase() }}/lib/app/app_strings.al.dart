@@ -53,6 +53,13 @@ extension AutoLocalizedContextExtension on BuildContext {
 @immutable
 class Strings {
   const Strings._();
+  static const details = PlainLocalizedString(
+    key: 'details',
+    values: {
+      'en': '''DETAILS''',
+    },
+  );
+
   static const genericNoInternetTitle = PlainLocalizedString(
     key: 'genericNoInternetTitle',
     values: {
@@ -88,20 +95,6 @@ class Strings {
     },
   );
 
-  static const genericSearch = PlainLocalizedString(
-    key: 'genericSearch',
-    values: {
-      'en': '''Search''',
-    },
-  );
-
-  static const genericNoSearchResults = PlainLocalizedString(
-    key: 'genericNoSearchResults',
-    values: {
-      'en': '''No results.''',
-    },
-  );
-
   static const genericYes = PlainLocalizedString(
     key: 'genericYes',
     values: {
@@ -116,24 +109,10 @@ class Strings {
     },
   );
 
-  static const genericYesterday = PlainLocalizedString(
-    key: 'genericYesterday',
-    values: {
-      'en': '''Yesterday''',
-    },
-  );
-
   static const genericOk = PlainLocalizedString(
     key: 'genericOk',
     values: {
       'en': '''OK''',
-    },
-  );
-
-  static const details = PlainLocalizedString(
-    key: 'details',
-    values: {
-      'en': '''DETAILS''',
     },
   );
 }

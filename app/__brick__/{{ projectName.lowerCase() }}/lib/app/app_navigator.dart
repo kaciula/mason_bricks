@@ -3,22 +3,23 @@ import 'package:{{ projectName.snakeCase() }}/features/common/ui/semi_custom/inf
 import 'package:{{ projectName.snakeCase() }}/features/common/ui/semi_custom/sure_dialog.dart';
 
 class AppNavigator {
-  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> globalNavigatorKey =
+      GlobalKey<NavigatorState>();
 
-  get context => navigatorKey.currentContext;
+  get context => globalNavigatorKey.currentContext;
 
   // Common
   Future<void> pop() async {
-    navigatorKey.currentState!.pop();
+    globalNavigatorKey.currentState!.pop();
   }
 
   Future<void> popBack(dynamic result) async {
-    navigatorKey.currentState!.pop(result);
+    globalNavigatorKey.currentState!.pop(result);
   }
 
   void showInfoDialog({required String msg, VoidCallback? onPressed}) {
     showDialog(
-      context: navigatorKey.currentContext!,
+      context: globalNavigatorKey.currentContext!,
       builder: (context) => InfoDialog(msg: msg, onPressed: onPressed),
     );
   }
@@ -33,7 +34,7 @@ class AppNavigator {
     VoidCallback? onNoPressed,
   }) {
     showDialog(
-      context: navigatorKey.currentContext!,
+      context: globalNavigatorKey.currentContext!,
       builder: (context) => SureDialog(
         title: title,
         msg: msg,
