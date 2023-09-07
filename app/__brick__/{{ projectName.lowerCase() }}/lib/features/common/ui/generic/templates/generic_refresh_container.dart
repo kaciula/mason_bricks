@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../utils/generic/refresh_state.dart';
+import '../utils/refresh_state.dart';
 
 class GenericRefreshContainer extends StatelessWidget {
   const GenericRefreshContainer({

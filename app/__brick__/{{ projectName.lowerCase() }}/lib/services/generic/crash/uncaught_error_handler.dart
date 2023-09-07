@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:{{ projectName.snakeCase() }}/features/common/utils/generic/string_extension.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/ui/generic/utils/string_extension.dart';
 
 abstract class UncaughtErrorHandler {
   Future<void> handleFlutterError(FlutterErrorDetails details);

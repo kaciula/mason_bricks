@@ -1,4 +1,4 @@
-import 'package:{{ projectName.snakeCase() }}/features/common/utils/generic/refresh_state.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/ui/generic/utils/refresh_state.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'splash_state.freezed.dart';

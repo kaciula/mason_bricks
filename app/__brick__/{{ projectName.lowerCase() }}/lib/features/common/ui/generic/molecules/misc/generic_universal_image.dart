@@ -2,7 +2,7 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_svg_provider/flutter_svg_provider.dart' as svg_provider;
-import 'package:{{ projectName.snakeCase() }}/features/common/widgets/generic/utils/string_extension.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/ui/generic/utils/string_extension.dart';
 import 'package:universal_io/io.dart';
 
 class GenericUniversalImage extends StatelessWidget {

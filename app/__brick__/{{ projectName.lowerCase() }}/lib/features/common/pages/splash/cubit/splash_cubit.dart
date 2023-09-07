@@ -1,7 +1,7 @@
 import 'package:{{ projectName.snakeCase() }}/app/app_locale.dart';
 import 'package:{{ projectName.snakeCase() }}/app/app_messenger.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/data/local/app_info_store.dart';
-import 'package:{{ projectName.snakeCase() }}/features/common/utils/generic/refresh_state.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/ui/generic/utils/refresh_state.dart';
 import 'package:{{ projectName.snakeCase() }}/start/service_locator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logging/logging.dart';

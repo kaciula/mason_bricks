@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:{{ projectName.snakeCase() }}/features/common/widgets/custom/molecules/dialogs/info_dialog.dart';
-import 'package:{{ projectName.snakeCase() }}/features/common/widgets/custom/molecules/dialogs/sure_dialog.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/ui/custom/molecules/dialogs/info_dialog.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/ui/custom/molecules/dialogs/sure_dialog.dart';
 
 class AppNavigator {
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();

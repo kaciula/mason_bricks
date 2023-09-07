@@ -5,7 +5,7 @@ import 'package:logging/logging.dart';
 import 'package:{{ projectName.snakeCase() }}/app/app_strings.al.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/pages/splash/cubit/splash_cubit.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/pages/splash/splash_page.dart';
-import 'package:{{ projectName.snakeCase() }}/features/common/utils/generic/build_context_extension.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/ui/generic/utils/build_context_extension.dart';
 import 'package:{{ projectName.snakeCase() }}/start/service_locator.dart';
 import 'package:universal_io/io.dart';
 
