@@ -2,7 +2,7 @@ import 'package:{{ projectName.snakeCase() }}/app/app_strings.al.dart';
 import 'package:{{ projectName.snakeCase() }}/app/app_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../../generic/generic_sure_dialog.dart';
+import '../generic/generic_sure_dialog.dart';
 
 class SureDialog extends StatelessWidget {
   const SureDialog({

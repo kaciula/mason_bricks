@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:{{ projectName.snakeCase() }}/app/app_styles.dart';
 
-import '../../../generic/generic_universal_image.dart';
+import '../generic/generic_universal_image.dart';
 
 class UniversalImage extends StatelessWidget {
   const UniversalImage(

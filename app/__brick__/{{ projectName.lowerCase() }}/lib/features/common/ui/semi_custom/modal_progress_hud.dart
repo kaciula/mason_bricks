@@ -1,8 +1,8 @@
 import 'package:{{ projectName.snakeCase() }}/app/app_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../generic/templates/generic_modal_progress_hud.dart';
-import '../atoms/circular_progress.dart';
+import '../generic/generic_modal_progress_hud.dart';
+import 'circular_progress.dart';
 
 class ModalProgressHUD extends StatelessWidget {
   const ModalProgressHUD({

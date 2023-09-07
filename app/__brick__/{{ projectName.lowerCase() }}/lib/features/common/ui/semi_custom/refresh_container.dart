@@ -2,9 +2,9 @@ import 'package:{{ projectName.snakeCase() }}/app/app_strings.al.dart';
 import 'package:{{ projectName.snakeCase() }}/app/app_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../generic/utils/refresh_state.dart';
-import '../../generic/templates/generic_refresh_container.dart';
-import '../atoms/circular_progress.dart';
+import '../generic/generic_refresh_container.dart';
+import '../generic/utils/refresh_state.dart';
+import 'circular_progress.dart';
 
 class RefreshContainer extends StatelessWidget {
   const RefreshContainer({

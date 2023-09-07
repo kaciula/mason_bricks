@@ -1,7 +1,7 @@
 import 'package:{{ projectName.snakeCase() }}/app/app_styles.dart';
 import 'package:flutter/material.dart';
 
-import '../../generic/generic_circular_progress.dart';
+import '../generic/generic_circular_progress.dart';
 
 class CircularProgress extends StatelessWidget {
   const CircularProgress({
