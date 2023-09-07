@@ -37,7 +37,6 @@ class MainAppState extends State<MainApp> {
           bloc: _appCubit,
           builder: (BuildContext context, AppState state) {
             return MaterialApp(
-              useInheritedMediaQuery: true,
               debugShowCheckedModeBanner: false,
               title: 'sample',
               supportedLocales: context.supportedLocales,
