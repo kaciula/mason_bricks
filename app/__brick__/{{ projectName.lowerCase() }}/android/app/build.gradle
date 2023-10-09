@@ -51,12 +51,12 @@ android {
     }
 
     // TODO: Generate/Get release keystore and put it in the key folder
-    // keytool -genkey -v -keystore my-release-key.keystore -alias alias_name -keyalg RSA -keysize 4096 -validity 10000
+    // keytool -genkey -v -keystore upload.keystore -alias upload -keyalg RSA -keysize 4096 -validity 10000
     signingConfigs {
         release {
-            storeFile file("key/todo")
+            storeFile file("key/upload.keystore")
             storePassword 'todo'
-            keyAlias 'todo'
+            keyAlias 'upload'
             keyPassword 'todo'
         }
     }

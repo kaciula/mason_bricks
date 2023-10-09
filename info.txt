@@ -8,4 +8,4 @@ mason remove -g app
 mason add -g app --path app
 mason upgrade app -g
 
-flutterfire configure -iro.zenparking.oregonadmin -aro.zenparking.oregonadmin
+flutterfire configure -iapp.kozmoz -aapp.kozmoz
