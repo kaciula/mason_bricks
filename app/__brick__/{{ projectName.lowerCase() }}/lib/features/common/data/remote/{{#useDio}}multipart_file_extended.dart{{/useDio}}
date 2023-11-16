@@ -12,6 +12,7 @@ class MultipartFileExtended extends MultipartFile {
     String? filename,
     this.filePath,
     MediaType? contentType,
+    // ignore: deprecated_member_use
   }) : super(stream, length, filename: filename, contentType: contentType);
 
   final String? filePath;

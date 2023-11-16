@@ -10,6 +10,7 @@ class CrashService {
   Future<void> init() async {
     {{#useFirebase}}if (kReleaseMode) {
       _uncaughtErrorHandler = UncaughtErrorHandlerRelease();
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
       FlutterError.onError = (FlutterErrorDetails details) async {
         await _uncaughtErrorHandler.handleFlutterError(details);
       };
@@ -18,10 +19,12 @@ class CrashService {
       await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);
     }{{/useFirebase}}
     {{^useFirebase}}_uncaughtErrorHandler = UncaughtErrorHandlerDebug();{{/useFirebase}}
-  }
 
-  Future<void> handleZonedError(dynamic exception, dynamic stack) async {
-    return _uncaughtErrorHandler.handleZonedError(exception, stack);
+    // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework
+    PlatformDispatcher.instance.onError = (Object error, StackTrace stack) {
+      _uncaughtErrorHandler.handleAppError(error, stack);
+      return true;
+    };
   }
 
   Future<void> reportUnexpectedError(

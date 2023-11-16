@@ -14,18 +14,5 @@ Future<void> main() async {
   await registerInstances();
   await init();
 
-  const Widget app = MainApp();
-  if (kReleaseMode) {
-    runAppInReleaseMode(app);
-  } else {
-    runApp(app);
-  }
-}
-
-void runAppInReleaseMode(Widget app) {
-  runZonedGuarded<Future<void>>(() async {
-    runApp(app);
-  }, (Object error, StackTrace stack) async {
-    await getIt<CrashService>().handleZonedError(error, stack);
-  });
+  runApp(MainApp());
 }

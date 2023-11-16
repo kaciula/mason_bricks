@@ -55,7 +55,7 @@ class LoggingInterceptor extends Interceptor {
   }
 
   @override
-  void onError(DioError err, ErrorInterceptorHandler handler) async {
+  void onError(DioException err, ErrorInterceptorHandler handler) async {
     final List<String> logs = [];
     logs.add(
         'ERROR: ${err.requestOptions.method} ${err.requestOptions.uri} ${err.response?.statusCode ?? ''}');

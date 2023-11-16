@@ -53,7 +53,7 @@ class MainAppState extends State<MainApp> {
               theme: state.appTheme.themeData,
               darkTheme: state.appTheme.darkThemeData,
               themeMode: state.appTheme.themeMode,
-              navigatorKey: _appNavigator.navigatorKey,
+              navigatorKey: _appNavigator.globalNavigatorKey,
               navigatorObservers: <NavigatorObserver>[_routeObserver],
               scaffoldMessengerKey: _appMessenger.messengerKey,
               onGenerateRoute: (RouteSettings settings) =>

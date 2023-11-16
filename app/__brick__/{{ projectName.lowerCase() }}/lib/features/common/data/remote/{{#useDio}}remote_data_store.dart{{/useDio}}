@@ -18,7 +18,6 @@ class RemoteDataStore {
         LoggingInterceptor(logPrint: logService.logPrint, showCURL: false),
       );
     }
-    _dio.interceptors.add(RetryOnConnectionChangeInterceptor(dio: _dio));
   }
 
   final CrashService crashService;

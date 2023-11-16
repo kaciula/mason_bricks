@@ -27,11 +27,11 @@ class AppMessenger {
     messengerState.showSnackBar(
       SnackBar(
         content: Text(errorMsg),
-        duration: errorDetails != null && _showDetailedErrorDetails
+        duration: errorDetails != null
             ? const Duration(milliseconds: 10000)
             : _snackBarDisplayDuration,
         backgroundColor: AppColors.red,
-        action: errorDetails != null && _showDetailedErrorDetails
+        action: errorDetails != null
             ? SnackBarAction(
                 label: Strings.details.get(),
                 textColor: AppColors.black,
@@ -70,6 +70,3 @@ class AppMessenger {
     );
   }
 }
-
-// todo: Hide error details when app live
-const bool _showDetailedErrorDetails = true;

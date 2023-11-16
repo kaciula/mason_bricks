@@ -17,7 +17,7 @@ class UncaughtErrorHandlerDebug extends UncaughtErrorHandler {
   }
 
   @override
-  Future<void> handleZonedError(dynamic exception, dynamic stack) async {
+  Future<void> handleAppError(dynamic exception, dynamic stack) async {
     final String sException = exception.toString();
     final bool shouldKill = shouldKillApp(sException);
     _warning('BOOOOM! Zoned error! [$exception]\n$stack');

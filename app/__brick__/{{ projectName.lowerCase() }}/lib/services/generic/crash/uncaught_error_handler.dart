@@ -4,7 +4,7 @@ import 'package:{{ projectName.snakeCase() }}/features/common/ui/generic/utils/s
 abstract class UncaughtErrorHandler {
   Future<void> handleFlutterError(FlutterErrorDetails details);
 
-  Future<void> handleZonedError(dynamic exception, dynamic stack);
+  Future<void> handleAppError(dynamic exception, dynamic stack);
 
   Future<void> reportUnexpectedError(
       Exception exception, StackTrace trace, String context,
