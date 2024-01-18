@@ -47,6 +47,11 @@ class UncaughtErrorHandlerRelease extends UncaughtErrorHandler {
     return FirebaseCrashlytics.instance.log(msg);
   }
 
+  @override
+  Future<void> setUserId(String? userId) {
+    return FirebaseCrashlytics.instance.setUserIdentifier(userId ?? '');
+  }
+
   void _kill() {
     exit(10);
   }

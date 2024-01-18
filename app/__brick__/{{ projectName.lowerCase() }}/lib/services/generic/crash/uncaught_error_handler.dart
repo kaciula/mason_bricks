@@ -11,6 +11,8 @@ abstract class UncaughtErrorHandler {
       {bool? killApp});
 
   Future<void> log(String msg);
+
+  Future<void> setUserId(String? userId);
 }
 
 bool shouldKillApp(String sException) {

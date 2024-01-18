@@ -40,6 +40,11 @@ class UncaughtErrorHandlerDebug extends UncaughtErrorHandler {
     _warning(msg);
   }
 
+  @override
+  Future<void> setUserId(String? userId) async {
+    _warning('Set user id $userId');
+  }
+
   void _warning(String msg) {
     developer.log(msg, level: Level.WARNING.value);
   }

@@ -37,4 +37,8 @@ class CrashService {
   Future<void> log(String msg) async {
     _uncaughtErrorHandler.log(msg);
   }
+
+  Future<void> setUserId(String? userId) {
+    return _uncaughtErrorHandler.setUserId(userId);
+  }
 }
