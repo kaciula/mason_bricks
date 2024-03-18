@@ -8,4 +8,7 @@ mason remove -g app
 mason add -g app --path app
 mason upgrade app -g
 
+Upgrade mason brick
+mason upgrade app -g
+
 flutterfire configure -iapp.kozmoz -aapp.kozmoz
