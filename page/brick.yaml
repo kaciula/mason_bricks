@@ -1,6 +1,6 @@
 name: page
 description: Create page skeleton using cubit
-version: 0.1.0+2
+version: 0.1.0+3
 
 environment:
   mason: ">=0.1.0-dev.38 <0.1.0"
