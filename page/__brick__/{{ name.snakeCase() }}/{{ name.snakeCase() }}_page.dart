@@ -8,7 +8,7 @@ import 'cubit/{{ name.snakeCase() }}_cubit.dart';
 import 'cubit/{{ name.snakeCase() }}_state.dart';
 
 class {{ name.pascalCase() }}Page extends StatefulWidget {
-  const {{ name.pascalCase() }}Page({Key? key}) : super(key: key);
+  const {{ name.pascalCase() }}Page({super.key});
 
   static const String routeName = '{{ name.pascalCase() }}';
 
