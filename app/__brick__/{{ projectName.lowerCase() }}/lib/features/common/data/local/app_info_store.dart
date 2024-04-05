@@ -11,8 +11,8 @@ class AppInfoStore {
   Future<AppInfo> get() async {
     final bool isFirstTime = prefs.getBool(_keyIsFirstTime) ?? true;
     final int oldVersionCode = prefs.getInt(_keyVersionCode) ?? 1;
-    final int currentVersionCode = await _currentVersionCode();
-    return AppInfo(isFirstTime, oldVersionCode, currentVersionCode);
+    final int versionCode = await currentVersionCode();
+    return AppInfo(isFirstTime, oldVersionCode, versionCode);
   }
 
   Future<void> save(
@@ -21,14 +21,24 @@ class AppInfoStore {
     await prefs.setInt(_keyVersionCode, versionCode);
   }
 
-  Future<int> _currentVersionCode() async {
+  Future<int> currentVersionCode() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
     return int.parse(packageInfo.buildNumber);
   }
 
-  Future<String> currentVersion() async {
+  Future<String> currentVersionFull() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
     return '${packageInfo.version} (${packageInfo.buildNumber})';
+  }
+
+  Future<String> currentVersion() async {
+    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    return packageInfo.version;
+  }
+
+  Future<String> storeAppId() async {
+    final PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    return packageInfo.packageName;
   }
 
   Future<void> saveTrackLogsInFile(bool trackLogsInFile) async {
