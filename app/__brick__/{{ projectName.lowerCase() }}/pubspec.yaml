@@ -20,8 +20,8 @@ dependencies:
   multiple_result: ^5.1.0
   sized_context: ^1.0.0+4
   gap: ^3.0.1
-{{#useDio}}  dio: ^5.3.3
-  path: ^1.8.3
+{{#useDio}}  dio: ^5.4.3+1
+  path: ^1.9.0
   http_parser: ^4.0.2{{/useDio}}
 
 {{#useFirebase}}  # Firebase
