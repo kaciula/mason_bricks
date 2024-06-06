@@ -7,6 +7,7 @@ part 'app_theme.freezed.dart';
 class AppTheme with _$AppTheme {
   factory AppTheme({
     required ThemeMode themeMode,
+    required double scaleFactor,
   }) = _AppTheme;
 
   AppTheme._();
@@ -14,14 +15,68 @@ class AppTheme with _$AppTheme {
   factory AppTheme.initial(ThemeMode themeMode) {
     return AppTheme(
       themeMode: themeMode,
+      scaleFactor: 1,
     );
   }
 
   ThemeData get themeData {
     return ThemeData(
+      useMaterial3: false,
+      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.purple),
       brightness: Brightness.light,
+      canvasColor: AppColors.white,
+      scaffoldBackgroundColor: AppColors.white,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: PlainElevatedButton.primaryStyle(scaleFactor),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: PlainOutlinedButton.primaryStyle(scaleFactor),
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: PlainTextButton.primaryStyle(scaleFactor),
+      ),
+      appBarTheme: PlainAppBar.primaryTheme(scaleFactor),
+      iconTheme: PlainIcon.primaryTheme(scaleFactor),
+      inputDecorationTheme: PlainTextFormField.primaryTheme(scaleFactor),
+      dividerTheme: PlainDivider.primaryTheme(scaleFactor),
+      extensions: [
+        AppThemeExtension(scaleFactor: scaleFactor),
+      ],
     );
   }
 
   ThemeData get darkThemeData => themeData;
+}
+
+@immutable
+class AppThemeExtension extends ThemeExtension<AppThemeExtension> {
+  const AppThemeExtension({
+    required this.scaleFactor,
+  });
+
+  final double scaleFactor;
+
+  @override
+  AppThemeExtension copyWith({double? scaleFactor}) {
+    return AppThemeExtension(
+      scaleFactor: scaleFactor ?? this.scaleFactor,
+    );
+  }
+
+  @override
+  AppThemeExtension lerp(AppThemeExtension? other, double t) {
+    if (other is! AppThemeExtension) {
+      return this;
+    }
+    return AppThemeExtension(
+      scaleFactor: lerpDouble(scaleFactor, other.scaleFactor, t)!,
+    );
+  }
+
+  @override
+  String toString() => 'AppThemeExtension(scaleFactor: $scaleFactor)';
+}
+
+extension AppThemeExt on ThemeData {
+  AppThemeExtension get appThemeExtension => extension<AppThemeExtension>()!;
 }

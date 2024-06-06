@@ -6,7 +6,7 @@ import '../generic/generic_universal_image.dart';
 class UniversalImage extends StatelessWidget {
   const UniversalImage(
     this.uri, {
-    Key? key,
+    super.key,
     this.color,
     this.colorBlendMode,
     this.width,
@@ -16,9 +16,10 @@ class UniversalImage extends StatelessWidget {
     this.fit,
     this.isCircle = false,
     this.useCaching = true,
-  }) : super(key: key);
+    this.loadingPlaceholder,
+  });
 
-  final String uri;
+  final String? uri;
   final Color? color;
   final BlendMode? colorBlendMode;
   final double? width;
@@ -28,6 +29,7 @@ class UniversalImage extends StatelessWidget {
   final BoxFit? fit;
   final bool isCircle;
   final bool useCaching;
+  final Widget? loadingPlaceholder;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,7 @@ class UniversalImage extends StatelessWidget {
       isCircle: isCircle,
       useCaching: useCaching,
       errorColor: AppColors.red,
+      loadingPlaceholder: loadingPlaceholder,
       errorPlaceholder: null,
     );
   }

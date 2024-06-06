@@ -1,0 +1,22 @@
+import 'package:flutter/cupertino.dart';
+import 'package:gap/gap.dart';
+import 'package:kozmoz/app/cubit/app_theme.dart';
+import 'package:kozmoz/features/common/ui/generic/utils/build_context_extension.dart';
+
+class PlainGap extends StatelessWidget {
+  const PlainGap(
+    this.mainAxisExtent, {
+    super.key,
+    this.applyScaleFactor = true,
+  });
+
+  final double mainAxisExtent;
+  final bool applyScaleFactor;
+
+  @override
+  Widget build(BuildContext context) {
+    final double scaleFactor =
+        applyScaleFactor ? context.theme.appThemeExtension.scaleFactor : 1;
+    return Gap(mainAxisExtent * scaleFactor);
+  }
+}

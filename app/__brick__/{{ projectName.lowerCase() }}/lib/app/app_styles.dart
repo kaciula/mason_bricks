@@ -17,3 +17,7 @@ class AppFonts {
 
   static const String roboto = 'Roboto';
 }
+
+class AppIcons {
+  AppIcons._();
+}

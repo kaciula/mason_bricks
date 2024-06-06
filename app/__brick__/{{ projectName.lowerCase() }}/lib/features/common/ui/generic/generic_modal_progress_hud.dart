@@ -2,23 +2,25 @@ import 'package:flutter/material.dart';
 
 class GenericModalProgressHUD extends StatelessWidget {
   const GenericModalProgressHUD({
-    Key? key,
+    super.key,
     required this.inAsyncCall,
     required this.color,
     required this.progressIndicator,
     required this.opacity,
+    required this.expand,
     required this.child,
-  }) : super(key: key);
+  });
 
   final bool inAsyncCall;
   final Color color;
   final Widget progressIndicator;
   final double opacity;
+  final bool expand;
   final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    final Widget widget = Stack(
       children: <Widget>[
         child,
         if (inAsyncCall) ...[
@@ -42,5 +44,6 @@ class GenericModalProgressHUD extends StatelessWidget {
         ]
       ],
     );
+    return expand ? SizedBox.expand(child: widget) : widget;
   }
 }

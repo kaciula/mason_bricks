@@ -8,7 +8,7 @@ import 'package:universal_io/io.dart';
 class GenericUniversalImage extends StatelessWidget {
   const GenericUniversalImage(
     this.uri, {
-    Key? key,
+    super.key,
     required this.color,
     required this.colorBlendMode,
     required this.width,
@@ -19,8 +19,9 @@ class GenericUniversalImage extends StatelessWidget {
     required this.isCircle,
     required this.useCaching,
     required this.errorColor,
+    required this.loadingPlaceholder,
     required this.errorPlaceholder,
-  }) : super(key: key);
+  });
 
   final String? uri;
   final Color? color;
@@ -33,6 +34,7 @@ class GenericUniversalImage extends StatelessWidget {
   final bool isCircle;
   final bool useCaching;
   final Color errorColor;
+  final Widget? loadingPlaceholder;
   final Widget? errorPlaceholder;
 
   @override
@@ -88,7 +90,7 @@ class GenericUniversalImage extends StatelessWidget {
           loadStateChanged: (ExtendedImageState state) {
             switch (state.extendedImageLoadState) {
               case LoadState.loading:
-                break;
+                return _loadingPlaceholder();
               case LoadState.completed:
                 break;
               case LoadState.failed:
@@ -122,6 +124,27 @@ class GenericUniversalImage extends StatelessWidget {
         },
         radius: radius,
       );
+    }
+  }
+
+  Widget _loadingPlaceholder() {
+    if (loadingPlaceholder != null) {
+      return loadingPlaceholder!;
+    } else {
+      if (!isCircle) {
+        return SizedBox(
+          height: height,
+          width: width,
+          child: Center(child: CircularProgress()),
+        );
+      } else {
+        final double radius =
+            width != null ? width! / 2 : (height != null ? height! / 2 : 16);
+        return CircleAvatar(
+          radius: radius,
+          child: CircularProgress(),
+        );
+      }
     }
   }
 
