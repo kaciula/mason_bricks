@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class GenericCircularProgress extends StatelessWidget {
   const GenericCircularProgress({
-    Key? key,
+    super.key,
     required this.color,
-  }) : super(key: key);
+  });
 
   final Color color;
 

@@ -5,10 +5,10 @@ import '../generic/generic_info_dialog.dart';
 
 class InfoDialog extends StatelessWidget {
   const InfoDialog({
-    Key? key,
+    super.key,
     required this.msg,
     this.onPressed,
-  }) : super(key: key);
+  });
 
   final String msg;
   final VoidCallback? onPressed;

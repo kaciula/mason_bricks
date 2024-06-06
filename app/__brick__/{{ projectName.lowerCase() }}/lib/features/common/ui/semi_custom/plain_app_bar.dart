@@ -10,6 +10,8 @@ class PlainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String label;
   final List<Widget>? actions;
 
+  static AppBarTheme primaryTheme(double scaleFactor) => AppBarTheme();
+
   @override
   Widget build(BuildContext context) {
     return AppBar(

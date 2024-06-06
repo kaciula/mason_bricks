@@ -4,9 +4,7 @@ mason add -g app --git-url https://github.com/kaciula/mason_bricks --git-path ap
 mason make app
 
 Test brick implementation
-mason remove -g app
-mason add -g app --path app
-mason upgrade app -g
+mason remove -g app;mason add -g app --path app;mason upgrade app -g
 
 Upgrade mason brick
 mason upgrade app -g

@@ -7,9 +7,9 @@ import 'responsive_sizing_info.dart';
 
 class ResponsiveHeightBuilder extends StatelessWidget {
   const ResponsiveHeightBuilder({
-    Key? key,
+    super.key,
     required this.builder,
-  }) : super(key: key);
+  });
 
   final ResponsiveBuilderCallback builder;
 

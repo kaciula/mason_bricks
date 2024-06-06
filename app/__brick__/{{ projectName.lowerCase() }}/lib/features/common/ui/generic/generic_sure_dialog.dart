@@ -4,7 +4,7 @@ import 'package:universal_io/io.dart';
 
 class GenericSureDialog extends StatelessWidget {
   const GenericSureDialog({
-    Key? key,
+    super.key,
     required this.title,
     required this.msg,
     required this.details,
@@ -14,7 +14,7 @@ class GenericSureDialog extends StatelessWidget {
     required this.onNoPressed,
     required this.isPlatformSpecific,
     required this.cupertinoColor,
-  }) : super(key: key);
+  });
 
   final String? title;
   final String msg;

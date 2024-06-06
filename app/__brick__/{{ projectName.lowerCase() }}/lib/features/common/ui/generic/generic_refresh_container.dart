@@ -4,7 +4,7 @@ import 'utils/refresh_state.dart';
 
 class GenericRefreshContainer extends StatelessWidget {
   const GenericRefreshContainer({
-    Key? key,
+    super.key,
     required this.refreshState,
     required this.content,
     required this.onRetry,
@@ -16,7 +16,7 @@ class GenericRefreshContainer extends StatelessWidget {
     required this.detailedErrorLabel,
     required this.retryLabel,
     this.wrapErrorInScaffold = false,
-  }) : super(key: key);
+  });
 
   final RefreshState refreshState;
   final Widget Function() content;

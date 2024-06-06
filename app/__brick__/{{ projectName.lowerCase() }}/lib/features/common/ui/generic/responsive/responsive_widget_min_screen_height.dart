@@ -6,7 +6,7 @@ import 'responsive_sizing_info.dart';
 
 class ResponsiveWidgetMinScreenHeight extends StatelessWidget {
   const ResponsiveWidgetMinScreenHeight({
-    Key? key,
+    super.key,
     this.minHeight320,
     this.minHeight375,
     this.minHeight414,
@@ -19,7 +19,7 @@ class ResponsiveWidgetMinScreenHeight extends StatelessWidget {
     this.minHeight1920,
     this.minHeight3840,
     this.minHeight4096,
-  }) : super(key: key);
+  });
 
   final WidgetBuilder? minHeight320;
   final WidgetBuilder? minHeight375;

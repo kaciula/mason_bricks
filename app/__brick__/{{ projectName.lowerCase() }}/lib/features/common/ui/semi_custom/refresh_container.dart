@@ -8,13 +8,13 @@ import 'circular_progress.dart';
 
 class RefreshContainer extends StatelessWidget {
   const RefreshContainer({
-    Key? key,
+    super.key,
     required this.refreshState,
     required this.content,
     required this.onRetry,
     this.progress,
     this.wrapErrorInScaffold = false,
-  }) : super(key: key);
+  });
 
   final RefreshState refreshState;
   final Widget Function() content;

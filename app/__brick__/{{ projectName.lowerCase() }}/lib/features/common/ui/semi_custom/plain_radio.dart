@@ -16,8 +16,8 @@ class PlainRadio<T> extends StatelessWidget {
     this.iconScale = 1,
     this.minHeight = 0,
     this.maxHeight = 32,
-    this.selectedFillColor = AppColors.purple,
-    this.unselectedFillColor = AppColors.greyE0,
+    this.selectedFillColor = AppColors.green,
+    this.unselectedFillColor = AppColors.black,
     this.applyScaleFactor = true,
   });
 

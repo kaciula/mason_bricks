@@ -16,7 +16,7 @@ import 'cubit/app_cubit.dart';
 import 'cubit/app_state.dart';
 
 class MainApp extends StatefulWidget {
-  const MainApp({Key? key}) : super(key: key);
+  const MainApp({super.key});
 
   @override
   MainAppState createState() => MainAppState();
@@ -67,7 +67,7 @@ class MainAppState extends State<MainApp> {
 }
 
 class AppDelegate extends StatefulWidget {
-  const AppDelegate({Key? key, required this.child}) : super(key: key);
+  const AppDelegate({super.key, required this.child});
 
   final Widget? child;
 

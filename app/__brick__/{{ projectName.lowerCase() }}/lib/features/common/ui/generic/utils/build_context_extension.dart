@@ -10,9 +10,11 @@ extension BuildContextExt on BuildContext {
 }
 
 extension ThemeExt on BuildContext {
-  Color get primaryColor => Theme.of(this).primaryColor;
+  ThemeData get theme => Theme.of(this);
 
-  TextTheme get textTheme => Theme.of(this).textTheme;
+  Color get primaryColor => theme.primaryColor;
+
+  TextTheme get textTheme => theme.textTheme;
 }
 
 extension ScaffoldExt on BuildContext {

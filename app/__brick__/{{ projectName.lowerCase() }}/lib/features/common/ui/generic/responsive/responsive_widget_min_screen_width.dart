@@ -6,7 +6,7 @@ import 'responsive_width_builder.dart';
 
 class ResponsiveWidgetMinScreenWidth extends StatelessWidget {
   const ResponsiveWidgetMinScreenWidth({
-    Key? key,
+    super.key,
     this.minWidth320,
     this.minWidth345,
     this.minWidth375,
@@ -20,7 +20,7 @@ class ResponsiveWidgetMinScreenWidth extends StatelessWidget {
     this.minWidth1920,
     this.minWidth3840,
     this.minWidth4096,
-  }) : super(key: key);
+  });
 
   final WidgetBuilder? minWidth320;
   final WidgetBuilder? minWidth345;

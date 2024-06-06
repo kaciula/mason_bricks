@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kozmoz/app/app_styles.dart';
 
+import '../../../../app/app_styles.dart';
 import '../generic/generic_plain_outlined_button.dart';
 
 class PlainOutlinedButton extends StatelessWidget {
@@ -14,7 +14,7 @@ class PlainOutlinedButton extends StatelessWidget {
     this.minHeight = 0,
     this.maxHeight = double.infinity,
     this.backgroundColor = AppColors.white,
-    this.foregroundColor = AppColors.grey242,
+    this.foregroundColor = AppColors.red,
     this.side,
     this.padding,
     this.shape,
@@ -37,18 +37,22 @@ class PlainOutlinedButton extends StatelessWidget {
   final OutlinedBorder? shape;
   final bool applyScaleFactor;
 
-  static ButtonStyle primaryStyle() => OutlinedButton.styleFrom(
-        backgroundColor: AppColors.purple,
+  static ButtonStyle primaryStyle(double scaleFactor) =>
+      OutlinedButton.styleFrom(
+        backgroundColor: AppColors.green,
         foregroundColor: AppColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(7),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 18),
+        padding: EdgeInsets.symmetric(
+          horizontal: 21 * scaleFactor,
+          vertical: 18 * scaleFactor,
+        ),
         textStyle: TextStyle(
           fontSize: 15,
-          fontFamily: AppFonts.montserrat,
+          fontFamily: AppFonts.roboto,
         ),
-        side: BorderSide(color: AppColors.purple, width: 1),
+        side: BorderSide(color: AppColors.green, width: 1),
       );
 
   @override

@@ -4,12 +4,12 @@ import 'package:universal_io/io.dart';
 
 class GenericInfoDialog extends StatelessWidget {
   const GenericInfoDialog({
-    Key? key,
+    super.key,
     required this.msg,
     required this.btnLabel,
     required this.onPressed,
     required this.isPlatformSpecific,
-  }) : super(key: key);
+  });
 
   final String msg;
   final String btnLabel;

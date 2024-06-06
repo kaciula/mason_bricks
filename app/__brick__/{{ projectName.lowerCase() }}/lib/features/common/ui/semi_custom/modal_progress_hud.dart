@@ -6,18 +6,20 @@ import 'circular_progress.dart';
 
 class ModalProgressHUD extends StatelessWidget {
   const ModalProgressHUD({
-    Key? key,
+    super.key,
     required this.inAsyncCall,
     this.color = AppColors.black,
     this.progressIndicator = const CircularProgress(),
     this.opacity = 0.3,
+    this.expand = true,
     required this.child,
-  }) : super(key: key);
+  });
 
   final bool inAsyncCall;
   final Color color;
   final Widget progressIndicator;
   final double opacity;
+  final bool expand;
   final Widget child;
 
   @override
@@ -27,6 +29,7 @@ class ModalProgressHUD extends StatelessWidget {
       color: color,
       progressIndicator: progressIndicator,
       opacity: opacity,
+      expand: expand,
       child: child,
     );
   }

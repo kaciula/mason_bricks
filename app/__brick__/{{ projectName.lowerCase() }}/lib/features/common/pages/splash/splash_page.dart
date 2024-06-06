@@ -7,7 +7,7 @@ import 'cubit/splash_cubit.dart';
 import 'cubit/splash_state.dart';
 
 class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   static const String routeName = 'Splash';
 

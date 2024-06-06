@@ -6,7 +6,6 @@ import 'package:flutter/foundation.dart';
 import 'package:logging/logging.dart';
 
 import 'logging_interceptor.dart';
-import 'retry_on_connection_change_interceptor.dart';
 
 class RemoteDataStore {
   RemoteDataStore(

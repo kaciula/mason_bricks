@@ -14,13 +14,16 @@ class PlainTextButton extends StatelessWidget {
   final Widget? child;
   final EdgeInsets? padding;
 
+  static ButtonStyle primaryStyle(double scaleFactor) => TextButton.styleFrom(
+        minimumSize: Size.zero,
+        tapTargetSize: MaterialTapTargetSize.padded,
+      );
+
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: onPressed,
       style: TextButton.styleFrom(
-        minimumSize: Size.zero,
-        tapTargetSize: MaterialTapTargetSize.padded,
         padding: padding,
       ),
       child: label != null ? Text(label!) : child!,

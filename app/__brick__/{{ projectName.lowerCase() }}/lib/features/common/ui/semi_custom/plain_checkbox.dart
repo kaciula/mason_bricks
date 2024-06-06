@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:kozmoz/features/common/ui/semi_custom/plain_gap.dart';
-import 'package:kozmoz/app/app_styles.dart';
-import 'package:kozmoz/features/common/ui/generic/material_ink_well.dart';
+
+import '../../../../app/app_styles.dart';
+import '../generic/material_ink_well.dart';
+import 'plain_gap.dart';
 
 class PlainCheckbox extends StatelessWidget {
   const PlainCheckbox({
@@ -39,7 +40,7 @@ class PlainCheckbox extends StatelessWidget {
                 onChanged: (value) => onTap(),
                 fillColor: MaterialStateProperty.resolveWith((states) {
                   if (states.contains(MaterialState.selected)) {
-                    return AppColors.purple;
+                    return AppColors.green;
                   }
                   return AppColors.white;
                 }),
@@ -51,7 +52,7 @@ class PlainCheckbox extends StatelessWidget {
                     return BorderSide(
                       color: states.contains(MaterialState.selected)
                           ? AppColors.white.withOpacity(0.16)
-                          : AppColors.purple,
+                          : AppColors.green,
                       width: 1,
                     );
                   },

@@ -1,5 +1,16 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+
+import '../../features/common/ui/semi_custom/plain_app_bar.dart';
+import '../../features/common/ui/semi_custom/plain_divider.dart';
+import '../../features/common/ui/semi_custom/plain_elevated_button.dart';
+import '../../features/common/ui/semi_custom/plain_icon.dart';
+import '../../features/common/ui/semi_custom/plain_outlined_button.dart';
+import '../../features/common/ui/semi_custom/plain_text_button.dart';
+import '../../features/common/ui/semi_custom/plain_text_form_field.dart';
+import '../app_styles.dart';
 
 part 'app_theme.freezed.dart';
 
@@ -22,7 +33,7 @@ class AppTheme with _$AppTheme {
   ThemeData get themeData {
     return ThemeData(
       useMaterial3: false,
-      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.purple),
+      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.green),
       brightness: Brightness.light,
       canvasColor: AppColors.white,
       scaffoldBackgroundColor: AppColors.white,

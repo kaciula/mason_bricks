@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kozmoz/app/app_styles.dart';
-import 'package:kozmoz/features/common/ui/generic/generic_plain_elevated_button.dart';
+
+import '../../../../app/app_styles.dart';
+import '../generic/generic_plain_elevated_button.dart';
 
 class PlainElevatedButton extends StatelessWidget {
   const PlainElevatedButton({
@@ -11,7 +12,7 @@ class PlainElevatedButton extends StatelessWidget {
     this.maxWidth = double.infinity,
     this.minHeight = 0,
     this.maxHeight = double.infinity,
-    this.backgroundColor = AppColors.purple,
+    this.backgroundColor = AppColors.green,
     this.foregroundColor = AppColors.white,
     this.padding,
     this.elevation = 0,
@@ -34,16 +35,20 @@ class PlainElevatedButton extends StatelessWidget {
   final OutlinedBorder? shape;
   final bool applyScaleFactor;
 
-  static ButtonStyle primaryStyle() => ElevatedButton.styleFrom(
-        backgroundColor: AppColors.purple,
+  static ButtonStyle primaryStyle(double scaleFactor) =>
+      ElevatedButton.styleFrom(
+        backgroundColor: AppColors.green,
         foregroundColor: AppColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(7),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 21, vertical: 18),
+        padding: EdgeInsets.symmetric(
+          horizontal: 21 * scaleFactor,
+          vertical: 18 * scaleFactor,
+        ),
         textStyle: TextStyle(
           fontSize: 15,
-          fontFamily: AppFonts.montserrat,
+          fontFamily: AppFonts.roboto,
         ),
       );
 

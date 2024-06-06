@@ -5,6 +5,8 @@ import 'package:flutter_svg_provider/flutter_svg_provider.dart' as svg_provider;
 import 'package:{{ projectName.snakeCase() }}/features/common/ui/generic/utils/string_extension.dart';
 import 'package:universal_io/io.dart';
 
+import '../semi_custom/circular_progress.dart';
+
 class GenericUniversalImage extends StatelessWidget {
   const GenericUniversalImage(
     this.uri, {

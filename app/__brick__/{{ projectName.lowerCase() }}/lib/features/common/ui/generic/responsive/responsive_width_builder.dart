@@ -7,9 +7,9 @@ import 'responsive_width_breakpoints.dart';
 
 class ResponsiveWidthBuilder extends StatelessWidget {
   const ResponsiveWidthBuilder({
-    Key? key,
+    super.key,
     required this.builder,
-  }) : super(key: key);
+  });
 
   final ResponsiveBuilderCallback builder;
 

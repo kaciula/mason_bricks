@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:gap/gap.dart';
-import 'package:kozmoz/app/cubit/app_theme.dart';
-import 'package:kozmoz/features/common/ui/generic/utils/build_context_extension.dart';
+
+import '../../../../app/cubit/app_theme.dart';
+import '../generic/utils/build_context_extension.dart';
 
 class PlainGap extends StatelessWidget {
   const PlainGap(

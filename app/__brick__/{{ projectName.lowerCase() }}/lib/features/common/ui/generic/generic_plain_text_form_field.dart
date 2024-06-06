@@ -22,6 +22,9 @@ class GenericPlainTextFormField extends StatelessWidget {
     required this.suffixIconConstraints,
     required this.autofocus,
     required this.validator,
+    required this.maxLength,
+    required this.minLines,
+    required this.maxLines,
     required this.contentPadding,
     required this.cursorColor,
     required this.errorText,
@@ -47,6 +50,9 @@ class GenericPlainTextFormField extends StatelessWidget {
   final String? initialValue;
   final void Function(String)? onChanged;
   final FormFieldValidator<String?>? validator;
+  final int? maxLength;
+  final int? maxLines;
+  final int? minLines;
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final BoxConstraints? suffixIconConstraints;
@@ -96,6 +102,9 @@ class GenericPlainTextFormField extends StatelessWidget {
       ),
       onChanged: onChanged,
       validator: validator,
+      maxLength: maxLength,
+      minLines: minLines,
+      maxLines: maxLines,
       cursorColor: cursorColor,
     );
   }

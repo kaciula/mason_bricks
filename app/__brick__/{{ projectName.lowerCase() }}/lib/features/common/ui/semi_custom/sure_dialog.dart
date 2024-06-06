@@ -6,7 +6,7 @@ import '../generic/generic_sure_dialog.dart';
 
 class SureDialog extends StatelessWidget {
   const SureDialog({
-    Key? key,
+    super.key,
     this.title,
     required this.msg,
     this.details,
@@ -14,7 +14,7 @@ class SureDialog extends StatelessWidget {
     this.noBtnLabel,
     required this.onYesPressed,
     this.onNoPressed,
-  }) : super(key: key);
+  });
 
   final String? title;
   final String msg;

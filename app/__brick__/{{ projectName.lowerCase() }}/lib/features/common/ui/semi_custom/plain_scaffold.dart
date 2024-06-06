@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:kozmoz/app/app_styles.dart';
+
+import '../../../../app/app_styles.dart';
 
 class PlainScaffold extends StatelessWidget {
   const PlainScaffold({
