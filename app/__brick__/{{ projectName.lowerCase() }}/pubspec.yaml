@@ -61,8 +61,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-# dart run flutter_launcher_icons:main
-flutter_icons:
+# dart run flutter_launcher_icons
+flutter_launcher_icons:
   android: true
   ios: true
   image_path_android: "resources/app_icon/app_icon.png"
