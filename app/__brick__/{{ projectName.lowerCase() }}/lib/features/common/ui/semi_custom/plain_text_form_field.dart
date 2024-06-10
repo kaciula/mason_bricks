@@ -8,9 +8,7 @@ class PlainTextFormField extends StatelessWidget {
   const PlainTextFormField({
     super.key,
     this.enabled = true,
-    this.fontSize = 15,
-    this.textColor = AppColors.black,
-    this.fontWeight,
+    this.textStyle = const TextStyle(fontSize: 16, color: AppColors.black),
     this.hintText,
     this.hintStyle,
     this.textCapitalization = TextCapitalization.none,
@@ -38,9 +36,7 @@ class PlainTextFormField extends StatelessWidget {
   });
 
   final bool enabled;
-  final double? fontSize;
-  final Color textColor;
-  final FontWeight? fontWeight;
+  final TextStyle? textStyle;
   final String? hintText;
   final TextStyle? hintStyle;
   final TextCapitalization textCapitalization;
@@ -74,7 +70,7 @@ class PlainTextFormField extends StatelessWidget {
         fillColor: AppColors.white,
         filled: true,
         hintStyle: TextStyle(
-          fontSize: 15,
+          fontSize: 16,
           color: AppColors.black,
         ),
         contentPadding:
@@ -82,43 +78,39 @@ class PlainTextFormField extends StatelessWidget {
         errorBorder: _errorBorder,
         errorStyle: TextStyle(
           fontSize: 14,
-          color: AppColors.red,
+          color: AppColors.errorColor,
         ),
       );
-
-  static const double _borderWidth = 1;
 
   static final OutlineInputBorder _unfocusedBorder = OutlineInputBorder(
     borderSide: BorderSide(
       color: AppColors.white.withOpacity(0.16),
       width: _borderWidth,
     ),
-    borderRadius: BorderRadius.circular(6),
+    borderRadius: BorderRadius.circular(_borderRadius),
   );
 
   static final OutlineInputBorder _focusedBorder = OutlineInputBorder(
     borderSide: const BorderSide(
-      color: AppColors.green,
+      color: AppColors.mainColor,
       width: _borderWidth,
     ),
-    borderRadius: BorderRadius.circular(6),
+    borderRadius: BorderRadius.circular(_borderRadius),
   );
 
   static final OutlineInputBorder _errorBorder = OutlineInputBorder(
     borderSide: const BorderSide(
-      color: AppColors.red,
+      color: AppColors.errorColor,
       width: _borderWidth,
     ),
-    borderRadius: BorderRadius.circular(6),
+    borderRadius: BorderRadius.circular(_borderRadius),
   );
 
   @override
   Widget build(BuildContext context) {
     return GenericPlainTextFormField(
       enabled: enabled,
-      fontSize: fontSize,
-      textColor: textColor,
-      fontWeight: fontWeight,
+      textStyle: textStyle,
       hintText: hintText,
       hintStyle: hintStyle,
       textCapitalization: textCapitalization,
@@ -157,3 +149,6 @@ class PlainTextFormField extends StatelessWidget {
     );
   }
 }
+
+const double _borderWidth = 1;
+const double _borderRadius = 5;

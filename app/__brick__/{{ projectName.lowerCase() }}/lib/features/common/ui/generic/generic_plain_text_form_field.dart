@@ -4,9 +4,7 @@ class GenericPlainTextFormField extends StatelessWidget {
   const GenericPlainTextFormField({
     super.key,
     required this.enabled,
-    required this.fontSize,
-    required this.textColor,
-    required this.fontWeight,
+    required this.textStyle,
     required this.hintText,
     required this.hintStyle,
     required this.textCapitalization,
@@ -37,9 +35,7 @@ class GenericPlainTextFormField extends StatelessWidget {
   });
 
   final bool enabled;
-  final double? fontSize;
-  final Color? textColor;
-  final FontWeight? fontWeight;
+  final TextStyle? textStyle;
   final String? hintText;
   final TextStyle? hintStyle;
   final TextCapitalization textCapitalization;
@@ -95,11 +91,7 @@ class GenericPlainTextFormField extends StatelessWidget {
         focusedBorder: focusedBorder,
         errorBorder: errorBorder,
       ),
-      style: TextStyle(
-        fontSize: fontSize,
-        color: textColor,
-        fontWeight: fontWeight,
-      ),
+      style: textStyle,
       onChanged: onChanged,
       validator: validator,
       maxLength: maxLength,

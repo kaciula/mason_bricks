@@ -30,7 +30,7 @@ class AppMessenger {
         duration: errorDetails != null
             ? const Duration(milliseconds: 10000)
             : _snackBarDisplayDuration,
-        backgroundColor: AppColors.red,
+        backgroundColor: AppColors.errorColor,
         action: errorDetails != null
             ? SnackBarAction(
                 label: Strings.details.get(),
@@ -48,7 +48,7 @@ class AppMessenger {
       context: appNavigator.context,
       builder: (BuildContext context) {
         return Container(
-          color: AppColors.red,
+          color: AppColors.errorColor,
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(16),

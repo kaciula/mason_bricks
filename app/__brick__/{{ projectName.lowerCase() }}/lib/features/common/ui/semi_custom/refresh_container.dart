@@ -29,7 +29,7 @@ class RefreshContainer extends StatelessWidget {
       content: content,
       onRetry: onRetry,
       progress: progress ?? _progress(),
-      errorBackgroundColor: AppColors.red,
+      errorBackgroundColor: AppColors.errorColor,
       errorTextColor: AppColors.white,
       errorTitle: Strings.genericErrorTitle.get(),
       defaultErrorMsg: Strings.genericErrorMsg.get(),

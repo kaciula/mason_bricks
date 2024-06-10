@@ -8,6 +8,9 @@ class PlainScaffold extends StatelessWidget {
     super.key,
     this.appBar,
     this.resizeToAvoidBottomInset,
+    this.extendBodyBehindAppBar,
+    this.backgroundColor = AppColors.bgColor,
+    this.isStatusBarDark = true,
     required this.body,
     this.floatingActionButton,
     this.bottomNavigationBar,
@@ -16,6 +19,9 @@ class PlainScaffold extends StatelessWidget {
 
   final PreferredSizeWidget? appBar;
   final bool? resizeToAvoidBottomInset;
+  final bool? extendBodyBehindAppBar;
+  final Color? backgroundColor;
+  final bool isStatusBarDark;
   final Widget body;
   final Widget? floatingActionButton;
   final Widget? bottomNavigationBar;
@@ -24,10 +30,14 @@ class PlainScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       appBar: appBar,
+      resizeToAvoidBottomInset: resizeToAvoidBottomInset,
+      extendBodyBehindAppBar: extendBodyBehindAppBar ?? false,
+      backgroundColor: backgroundColor,
       body: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light
+        value: (isStatusBarDark
+                ? SystemUiOverlayStyle.dark
+                : SystemUiOverlayStyle.light)
             .copyWith(statusBarColor: AppColors.transparent),
         child: body,
       ),

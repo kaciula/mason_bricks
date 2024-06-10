@@ -16,6 +16,8 @@ class GenericPlainElevatedButton extends StatelessWidget {
     required this.maxHeight,
     required this.backgroundColor,
     required this.foregroundColor,
+    required this.disabledBackgroundColor,
+    required this.disabledForegroundColor,
     required this.padding,
     required this.elevation,
     required this.shape,
@@ -31,6 +33,8 @@ class GenericPlainElevatedButton extends StatelessWidget {
   final double maxHeight;
   final Color? backgroundColor;
   final Color? foregroundColor;
+  final Color? disabledBackgroundColor;
+  final Color? disabledForegroundColor;
   final EdgeInsets? padding;
   final double? elevation;
   final OutlinedBorder? shape;
@@ -51,6 +55,8 @@ class GenericPlainElevatedButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
           foregroundColor: foregroundColor,
+          disabledBackgroundColor: disabledBackgroundColor,
+          disabledForegroundColor: disabledForegroundColor,
           padding: padding != null && scaleFactor != 1
               ? EdgeInsets.only(
                   left: padding!.left * scaleFactor,

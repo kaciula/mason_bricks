@@ -12,6 +12,7 @@ class LocalStore {
 
   Future<void> init({required bool isFirstTime}) async {
     if (isFirstTime) {
+      _logger.info('Delete encryption key on first time run');
       // The encryption key survives app reinstalls
       await secureStore.deleteEncryptionKey();
     }
@@ -20,6 +21,7 @@ class LocalStore {
 
     late List<int> encryptionKey;
     if (!await secureStore.hasEncryptionKey()) {
+      _logger.info('Generate new encryption key');
       encryptionKey = Hive.generateSecureKey();
       await secureStore.persistEncryptionKey(base64UrlEncode(encryptionKey));
     } else {
@@ -27,3 +29,6 @@ class LocalStore {
     }
   }
 }
+
+// ignore: unused_element
+final Logger _logger = Logger('LocalStore');

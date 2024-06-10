@@ -40,7 +40,7 @@ class PlainCheckbox extends StatelessWidget {
                 onChanged: (value) => onTap(),
                 fillColor: MaterialStateProperty.resolveWith((states) {
                   if (states.contains(MaterialState.selected)) {
-                    return AppColors.green;
+                    return AppColors.mainColor;
                   }
                   return AppColors.white;
                 }),
@@ -52,7 +52,7 @@ class PlainCheckbox extends StatelessWidget {
                     return BorderSide(
                       color: states.contains(MaterialState.selected)
                           ? AppColors.white.withOpacity(0.16)
-                          : AppColors.green,
+                          : AppColors.mainColor,
                       width: 1,
                     );
                   },

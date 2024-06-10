@@ -14,7 +14,7 @@ class PlainOutlinedButton extends StatelessWidget {
     this.minHeight = 0,
     this.maxHeight = double.infinity,
     this.backgroundColor = AppColors.white,
-    this.foregroundColor = AppColors.red,
+    this.foregroundColor = AppColors.pink,
     this.side,
     this.padding,
     this.shape,

@@ -35,7 +35,7 @@ class SureDialog extends StatelessWidget {
       onYesPressed: onYesPressed,
       onNoPressed: onNoPressed,
       isPlatformSpecific: true,
-      cupertinoColor: AppColors.red,
+      cupertinoColor: AppColors.white,
     );
   }
 }

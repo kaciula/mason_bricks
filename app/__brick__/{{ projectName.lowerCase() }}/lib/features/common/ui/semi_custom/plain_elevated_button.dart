@@ -12,8 +12,10 @@ class PlainElevatedButton extends StatelessWidget {
     this.maxWidth = double.infinity,
     this.minHeight = 0,
     this.maxHeight = double.infinity,
-    this.backgroundColor = AppColors.green,
-    this.foregroundColor = AppColors.white,
+    this.backgroundColor = _backgroundColor,
+    this.foregroundColor = _foregroundColor,
+    this.disabledBackgroundColor = _disabledBackgroundColor,
+    this.disabledForegroundColor = _disabledForegroundColor,
     this.padding,
     this.elevation = 0,
     this.shape,
@@ -30,6 +32,8 @@ class PlainElevatedButton extends StatelessWidget {
   final double maxHeight;
   final Color backgroundColor;
   final Color foregroundColor;
+  final Color disabledBackgroundColor;
+  final Color disabledForegroundColor;
   final EdgeInsets? padding;
   final double? elevation;
   final OutlinedBorder? shape;
@@ -37,17 +41,20 @@ class PlainElevatedButton extends StatelessWidget {
 
   static ButtonStyle primaryStyle(double scaleFactor) =>
       ElevatedButton.styleFrom(
-        backgroundColor: AppColors.green,
-        foregroundColor: AppColors.white,
+        backgroundColor: _backgroundColor,
+        foregroundColor: _foregroundColor,
+        disabledBackgroundColor: _disabledBackgroundColor,
+        disabledForegroundColor: _disabledForegroundColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(7),
+          borderRadius: BorderRadius.circular(5),
         ),
         padding: EdgeInsets.symmetric(
           horizontal: 21 * scaleFactor,
-          vertical: 18 * scaleFactor,
+          vertical: 14 * scaleFactor,
         ),
         textStyle: TextStyle(
-          fontSize: 15,
+          fontSize: 20,
+          fontWeight: FontWeight.w500,
           fontFamily: AppFonts.roboto,
         ),
       );
@@ -63,6 +70,8 @@ class PlainElevatedButton extends StatelessWidget {
       maxHeight: maxHeight,
       backgroundColor: backgroundColor,
       foregroundColor: foregroundColor,
+      disabledBackgroundColor: disabledBackgroundColor,
+      disabledForegroundColor: disabledForegroundColor,
       padding: padding,
       elevation: elevation,
       shape: shape,
@@ -71,3 +80,8 @@ class PlainElevatedButton extends StatelessWidget {
     );
   }
 }
+
+const Color _backgroundColor = AppColors.mainColor;
+const Color _foregroundColor = AppColors.white;
+const Color _disabledBackgroundColor = AppColors.green;
+const Color _disabledForegroundColor = AppColors.pink;
