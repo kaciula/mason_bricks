@@ -42,9 +42,25 @@ class MainAppState extends State<MainApp> {
               supportedLocales: context.supportedLocales,
               localizationsDelegates: context.localizationsDelegates,
               builder: (BuildContext context, Widget? child) {
-                final Size size = MediaQuery.of(context).size;
-                _logger.fine('Device size ${size.width} x ${size.height}');
-                return AppDelegate(child: child);
+                final Size deviceSize = MediaQuery.of(context).size;
+                _logger.fine(
+                    'Device size ${deviceSize.width} x ${deviceSize.height}');
+                _appCubit
+                    .scaleFactorUpdated(_responsiveScaleFactor(deviceSize));
+                return MediaQuery(
+                  data: MediaQuery.of(context).copyWith(
+                    textScaler: TextScaler.linear(
+                      _responsiveTextScaleFactor(deviceSize),
+                    ),
+                  ),
+                  child: PlainContainer(
+                    decoration: BoxDecoration(
+                      color: AppColors.white,
+                    ),
+                    padding: _responsiveSidePadding(deviceSize),
+                    child: AppDelegate(child: child),
+                  ),
+                );
               },
               home: BlocProvider<SplashCubit>(
                 create: (BuildContext context) => SplashCubit()..appStarted(),
@@ -63,6 +79,42 @@ class MainAppState extends State<MainApp> {
         ),
       ),
     );
+  }
+
+  double _responsiveTextScaleFactor(Size deviceSize) {
+    if (deviceSize.width >= 950 && deviceSize.height >= 950) {
+      return 2;
+    }
+    if (deviceSize.width >= 600 && deviceSize.height >= 600) {
+      return 1.5;
+    }
+    return 1;
+  }
+
+  double _responsiveScaleFactor(Size deviceSize) {
+    if (deviceSize.width >= 950 && deviceSize.height >= 950) {
+      return 1.8;
+    }
+    if (deviceSize.width >= 600 && deviceSize.height >= 600) {
+      return 1.5;
+    }
+    return 1;
+  }
+
+  EdgeInsets _responsiveSidePadding(Size deviceSize) {
+    if (deviceSize.width >= 950 && deviceSize.height >= 950) {
+      /* return EdgeInsets.symmetric(
+        horizontal: 0.1 * deviceSize.width,
+        vertical: 0.1 * deviceSize.height,
+      ); */
+    }
+    if (deviceSize.width >= 600 && deviceSize.height >= 600) {
+      /* return EdgeInsets.symmetric(
+        horizontal: 0.1 * deviceSize.width,
+        vertical: 0.1 * deviceSize.height,
+      ); */
+    }
+    return EdgeInsets.zero;
   }
 }
 
