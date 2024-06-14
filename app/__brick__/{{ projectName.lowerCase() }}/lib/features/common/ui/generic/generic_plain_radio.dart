@@ -43,49 +43,54 @@ class GenericPlainRadio<T> extends StatelessWidget {
   Widget build(BuildContext context) {
     final double scaleFactor =
         applyScaleFactor ? context.theme.appThemeExtension.scaleFactor : 1;
-    return MaterialInkWell(
-      onTap: onTap,
-      child: PlainConstrainedBox(
-        minHeight: minHeight,
-        maxHeight: maxHeight,
+    final Widget child = PlainConstrainedBox(
+      minHeight: minHeight,
+      maxHeight: maxHeight,
+      applyScaleFactor: applyScaleFactor,
+      child: PlainPadding(
+        padding: padding,
         applyScaleFactor: applyScaleFactor,
-        child: PlainPadding(
-          padding: padding,
-          applyScaleFactor: applyScaleFactor,
-          child: Row(
-            children: [
-              if (prefix != null) ...[
-                fullWidth ? Expanded(child: prefix!) : prefix!,
-                PlainGap(
-                  12,
-                  applyScaleFactor: applyScaleFactor,
-                ),
-              ],
-              Transform.scale(
-                scale: iconScale * scaleFactor,
-                child: Radio(
-                  value: value,
-                  groupValue: groupValue,
-                  onChanged: onTap != null ? (T? _) => onTap!.call() : null,
-                  fillColor: MaterialStateProperty.resolveWith((states) {
-                    if (states.contains(MaterialState.selected)) {
-                      return selectedFillColor;
-                    }
-                    return unselectedFillColor;
-                  }),
-                ),
+        child: Row(
+          children: [
+            if (prefix != null) ...[
+              fullWidth ? Expanded(child: prefix!) : prefix!,
+              PlainGap(
+                12,
+                applyScaleFactor: applyScaleFactor,
               ),
-              if (suffix != null) ...[
-                PlainGap(
-                  12,
-                  applyScaleFactor: applyScaleFactor,
-                ),
-                fullWidth ? Expanded(child: suffix!) : suffix!,
-              ],
             ],
-          ),
+            Transform.scale(
+              scale: iconScale * scaleFactor,
+              child: Radio(
+                value: value,
+                groupValue: groupValue,
+                onChanged: onTap != null ? (T? _) => onTap!.call() : null,
+                fillColor: WidgetStateProperty.resolveWith((states) {
+                  if (states.contains(WidgetState.selected)) {
+                    return selectedFillColor;
+                  }
+                  return unselectedFillColor;
+                }),
+              ),
+            ),
+            if (suffix != null) ...[
+              PlainGap(
+                12,
+                applyScaleFactor: applyScaleFactor,
+              ),
+              fullWidth ? Expanded(child: suffix!) : suffix!,
+            ],
+          ],
         ),
       ),
     );
+
+    // Allow a parent tap to be triggered if there is no tap associated with this widget
+    return onTap != null
+        ? MaterialInkWell(
+            onTap: onTap,
+            child: child,
+          )
+        : child;
   }
 }

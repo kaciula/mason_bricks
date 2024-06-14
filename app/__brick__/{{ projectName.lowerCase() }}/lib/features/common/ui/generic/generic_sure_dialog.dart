@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:universal_io/io.dart';
 
+import '../semi_custom/plain_container.dart';
+
 class GenericSureDialog extends StatelessWidget {
   const GenericSureDialog({
     super.key,
@@ -42,7 +44,7 @@ class GenericSureDialog extends StatelessWidget {
         children: [
           Text(msg),
           if (details != null)
-            Container(
+            PlainContainer(
               margin: EdgeInsets.only(top: 12),
               child: Text(details!),
             ),
@@ -76,7 +78,7 @@ class GenericSureDialog extends StatelessWidget {
         children: [
           Text(msg),
           if (details != null)
-            Container(
+            PlainContainer(
               margin: EdgeInsets.only(top: 12),
               child: Text(details!),
             ),

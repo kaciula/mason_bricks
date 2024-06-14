@@ -6,6 +6,8 @@ import 'package:{{ projectName.snakeCase() }}/features/common/ui/generic/utils/s
 import 'package:universal_io/io.dart';
 
 import '../semi_custom/circular_progress.dart';
+import '../semi_custom/plain_container.dart';
+import '../semi_custom/plain_icon.dart';
 
 class GenericUniversalImage extends StatelessWidget {
   const GenericUniversalImage(
@@ -155,7 +157,7 @@ class GenericUniversalImage extends StatelessWidget {
       return errorPlaceholder!;
     } else {
       if (!isCircle) {
-        return Container(
+        return PlainContainer(
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
             color: errorColor.withOpacity(0.2),
@@ -163,7 +165,7 @@ class GenericUniversalImage extends StatelessWidget {
           ),
           height: height,
           width: width,
-          child: Icon(Icons.error, size: 24),
+          child: PlainIcon(Icons.error, size: 24),
         );
       } else {
         final double radius =

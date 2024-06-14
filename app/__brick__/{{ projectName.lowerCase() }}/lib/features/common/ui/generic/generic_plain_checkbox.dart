@@ -73,8 +73,8 @@ class GenericPlainCheckbox extends StatelessWidget {
                   value: value,
                   onChanged: (value) => onTap(),
                   checkColor: checkColor,
-                  fillColor: MaterialStateProperty.resolveWith((states) {
-                    if (states.contains(MaterialState.selected)) {
+                  fillColor: WidgetStateProperty.resolveWith((states) {
+                    if (states.contains(WidgetState.selected)) {
                       return selectedFillColor;
                     }
                     return unselectedFillColor;
@@ -82,10 +82,10 @@ class GenericPlainCheckbox extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(4),
                   ),
-                  side: MaterialStateBorderSide.resolveWith(
+                  side: WidgetStateBorderSide.resolveWith(
                     (states) {
                       return BorderSide(
-                        color: states.contains(MaterialState.selected)
+                        color: states.contains(WidgetState.selected)
                             ? selectedBorderColor
                             : unselectedBorderColor,
                         width: 1,

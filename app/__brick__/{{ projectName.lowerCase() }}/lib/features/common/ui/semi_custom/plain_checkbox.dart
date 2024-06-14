@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../app/app_styles.dart';
 import '../generic/material_ink_well.dart';
 import 'plain_gap.dart';
+import 'plain_padding.dart';
 
 class PlainCheckbox extends StatelessWidget {
   const PlainCheckbox({
@@ -24,7 +25,7 @@ class PlainCheckbox extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialInkWell(
       onTap: onTap,
-      child: Padding(
+      child: PlainPadding(
         padding: padding,
         child: Row(
           children: [

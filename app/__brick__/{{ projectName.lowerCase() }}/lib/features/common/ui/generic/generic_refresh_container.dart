@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../semi_custom/plain_container.dart';
+import '../semi_custom/plain_padding.dart';
 import 'utils/refresh_state.dart';
 
 class GenericRefreshContainer extends StatelessWidget {
@@ -49,7 +51,7 @@ class GenericRefreshContainer extends StatelessWidget {
     final String errorMsg = errorRefreshState.errorMsg ?? defaultErrorMsg;
     final String? errorDetails = errorRefreshState.errorDetails;
     return Center(
-      child: Padding(
+      child: PlainPadding(
         padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -87,10 +89,10 @@ class GenericRefreshContainer extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return Container(
+        return PlainContainer(
           color: errorBackgroundColor,
           child: SingleChildScrollView(
-            child: Padding(
+            child: PlainPadding(
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [

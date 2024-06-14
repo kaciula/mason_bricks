@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/ui/semi_custom/plain_container.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/ui/semi_custom/plain_scaffold.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/ui/semi_custom/refresh_container.dart';
 import 'package:logging/logging.dart';
 
@@ -25,7 +27,7 @@ class _SplashPageState extends State<SplashPage> {
 
   Widget _builder(BuildContext context, SplashState state) {
     _logger.info('rebuild state=$state');
-    return Scaffold(
+    return PlainScaffold(
       body: _body(context, state),
     );
   }
@@ -33,7 +35,7 @@ class _SplashPageState extends State<SplashPage> {
   Widget _body(BuildContext context, SplashState state) {
     return RefreshContainer(
       refreshState: state.refreshState,
-      content: () => Container(),
+      content: () => PlainContainer(),
       onRetry: () => _cubit.refreshRequested(),
     );
   }

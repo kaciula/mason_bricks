@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:{{ projectName.snakeCase() }}/app/app_navigator.dart';
 import 'package:{{ projectName.snakeCase() }}/start/service_locator.dart';
 
+import '../features/common/ui/semi_custom/plain_container.dart';
+import '../features/common/ui/semi_custom/plain_padding.dart';
 import 'app_strings.al.dart';
 import 'app_styles.dart';
 
@@ -47,10 +49,10 @@ class AppMessenger {
     showModalBottomSheet(
       context: appNavigator.context,
       builder: (BuildContext context) {
-        return Container(
+        return PlainContainer(
           color: AppColors.errorColor,
           child: SingleChildScrollView(
-            child: Padding(
+            child: PlainPadding(
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [

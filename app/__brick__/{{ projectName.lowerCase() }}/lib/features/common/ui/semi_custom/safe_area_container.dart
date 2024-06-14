@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../app/app_styles.dart';
+import 'plain_container.dart';
 
 class SafeAreaContainer extends StatelessWidget {
   const SafeAreaContainer({
@@ -18,14 +19,14 @@ class SafeAreaContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return PlainContainer(
       decoration: backgroundDecoration,
       child: SafeArea(
         bottom: false,
-        child: Container(
+        child: PlainContainer(
           color: bottomColor,
           child: SafeArea(
-            child: Container(
+            child: PlainContainer(
               color: mainColor,
               height: double.infinity,
               child: child,
