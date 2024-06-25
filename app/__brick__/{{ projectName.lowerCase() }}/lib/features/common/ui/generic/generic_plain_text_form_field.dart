@@ -16,6 +16,7 @@ class GenericPlainTextFormField extends StatelessWidget {
     required this.onChanged,
     required this.fillColor,
     required this.prefixIcon,
+    required this.prefixIconConstraints,
     required this.suffixIcon,
     required this.suffixIconConstraints,
     required this.autofocus,
@@ -50,6 +51,7 @@ class GenericPlainTextFormField extends StatelessWidget {
   final int? maxLines;
   final int? minLines;
   final Widget? prefixIcon;
+  final BoxConstraints? prefixIconConstraints;
   final Widget? suffixIcon;
   final BoxConstraints? suffixIconConstraints;
   final Color? fillColor;
@@ -81,9 +83,10 @@ class GenericPlainTextFormField extends StatelessWidget {
         hintText: hintText,
         hintStyle: hintStyle,
         fillColor: fillColor,
+        prefixIcon: prefixIcon,
+        prefixIconConstraints: prefixIconConstraints,
         suffixIcon: suffixIcon,
         suffixIconConstraints: suffixIconConstraints,
-        prefixIcon: prefixIcon,
         contentPadding: contentPadding,
         errorText: errorText,
         border: border,

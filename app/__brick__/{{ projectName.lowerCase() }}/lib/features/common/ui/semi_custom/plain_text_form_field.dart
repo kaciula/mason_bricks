@@ -8,7 +8,7 @@ class PlainTextFormField extends StatelessWidget {
   const PlainTextFormField({
     super.key,
     this.enabled = true,
-    this.textStyle = const TextStyle(fontSize: 16, color: AppColors.black),
+    this.textStyle = const TextStyle(fontSize: 16, color: AppColors.grey22),
     this.hintText,
     this.hintStyle,
     this.textCapitalization = TextCapitalization.none,
@@ -20,6 +20,7 @@ class PlainTextFormField extends StatelessWidget {
     this.onChanged,
     this.fillColor,
     this.prefixIcon,
+    this.prefixIconConstraints,
     this.suffixIcon,
     this.suffixIconConstraints,
     this.autofocus = false,
@@ -51,6 +52,7 @@ class PlainTextFormField extends StatelessWidget {
   final int? maxLines;
   final int? minLines;
   final Widget? prefixIcon;
+  final BoxConstraints? prefixIconConstraints;
   final Widget? suffixIcon;
   final BoxConstraints? suffixIconConstraints;
   final Color? fillColor;
@@ -122,6 +124,7 @@ class PlainTextFormField extends StatelessWidget {
       onChanged: onChanged,
       fillColor: fillColor,
       prefixIcon: prefixIcon,
+      prefixIconConstraints: prefixIconConstraints,
       suffixIcon: suffixIcon,
       suffixIconConstraints: suffixIconConstraints,
       autofocus: autofocus,
