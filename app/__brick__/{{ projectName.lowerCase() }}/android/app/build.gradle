@@ -47,6 +47,11 @@ android {
         targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+
+        ndk {
+            // Flutter does not currently support building for x86 Android.
+            abiFilters("armeabi-v7a", "x86_64", "arm64-v8a")
+        }
     }
 
     // TODO: Generate/Get release keystore and put it in the key folder
