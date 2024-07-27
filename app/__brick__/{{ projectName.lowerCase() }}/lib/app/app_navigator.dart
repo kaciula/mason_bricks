@@ -47,5 +47,23 @@ class AppNavigator {
     );
   }
 
+  void showPlainDialog(Widget dialog,
+      {bool barrierDismissible = true, bool usePostFrameCallback = false}) {
+    if (!usePostFrameCallback) {
+      showDialog(
+        context: context,
+        barrierDismissible: barrierDismissible,
+        builder: (context) => dialog,
+      );
+    } else {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showPlainDialog(
+          dialog,
+          barrierDismissible: barrierDismissible,
+          usePostFrameCallback: false,
+        );
+      });
+    }
+  }
   // ---
 }
