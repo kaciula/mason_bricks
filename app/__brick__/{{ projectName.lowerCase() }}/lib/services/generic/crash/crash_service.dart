@@ -1,3 +1,5 @@
+import 'dart:isolate';
+
 {{#useFirebase}}import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'uncaught_error_handler_release.dart';{{/useFirebase}}
@@ -25,6 +27,14 @@ class CrashService {
       _uncaughtErrorHandler.handleAppError(error, stack);
       return true;
     };
+
+    Isolate.current.addErrorListener(RawReceivePort(
+      (pair) async {
+        final List<dynamic> errorAndStacktrace = pair;
+        _uncaughtErrorHandler.handleAppError(
+            errorAndStacktrace.first, errorAndStacktrace.last);
+      },
+    ).sendPort);
   }
 
   Future<void> reportUnexpectedError(

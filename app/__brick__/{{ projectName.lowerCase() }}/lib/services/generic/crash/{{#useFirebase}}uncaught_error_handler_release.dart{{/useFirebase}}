@@ -52,6 +52,11 @@ class UncaughtErrorHandlerRelease extends UncaughtErrorHandler {
     return FirebaseCrashlytics.instance.setUserIdentifier(userId ?? '');
   }
 
+  @override
+  Future<void> setCustomKey(String key, dynamic value) {
+    return FirebaseCrashlytics.instance.setCustomKey(key, value);
+  }
+
   void _kill() {
     exit(10);
   }

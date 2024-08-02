@@ -45,6 +45,11 @@ class UncaughtErrorHandlerDebug extends UncaughtErrorHandler {
     _warning('Set user id $userId');
   }
 
+  @override
+  Future<void> setCustomKey(String key, dynamic value) async {
+    _warning('Set custom key $key: $value');
+  }
+
   void _warning(String msg) {
     developer.log(msg, level: Level.WARNING.value);
   }
