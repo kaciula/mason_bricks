@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../../../../app/cubit/app_theme.dart';
+import '../constants.dart';
 import '../generic/utils/build_context_extension.dart';
 
 class PlainSizedBox extends StatelessWidget {
@@ -8,7 +9,7 @@ class PlainSizedBox extends StatelessWidget {
     super.key,
     this.width,
     this.height,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
     required this.child,
   });
 

@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../../../app/cubit/app_theme.dart';
+import '../constants.dart';
 import '../generic/utils/build_context_extension.dart';
 
 class PlainPadding extends StatelessWidget {
   const PlainPadding({
     super.key,
     required this.padding,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
     required this.child,
   });
 

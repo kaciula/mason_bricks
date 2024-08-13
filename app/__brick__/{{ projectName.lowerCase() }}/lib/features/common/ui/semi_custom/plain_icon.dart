@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../app/app_styles.dart';
 import '../../../../app/cubit/app_theme.dart';
+import '../constants.dart';
 import '../generic/utils/build_context_extension.dart';
 
 class PlainIcon extends StatelessWidget {
@@ -10,7 +11,7 @@ class PlainIcon extends StatelessWidget {
     super.key,
     this.size,
     this.color,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
   });
 
   final IconData icon;

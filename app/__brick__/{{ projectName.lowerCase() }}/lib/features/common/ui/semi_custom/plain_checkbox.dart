@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../app/app_styles.dart';
+import '../constants.dart';
 import '../generic/generic_plain_checkbox.dart';
 
 class PlainCheckbox extends StatelessWidget {
@@ -21,7 +22,7 @@ class PlainCheckbox extends StatelessWidget {
     this.selectedBorderColor = AppColors.mainColor,
     this.unselectedFillColor = AppColors.grey99,
     this.unselectedBorderColor,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
   });
 
   final bool? value;

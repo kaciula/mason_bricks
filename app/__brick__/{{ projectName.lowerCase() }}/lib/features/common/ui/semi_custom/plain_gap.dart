@@ -2,13 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../app/cubit/app_theme.dart';
+import '../constants.dart';
 import '../generic/utils/build_context_extension.dart';
 
 class PlainGap extends StatelessWidget {
   const PlainGap(
     this.mainAxisExtent, {
     super.key,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
   });
 
   final double mainAxisExtent;

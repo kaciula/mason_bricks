@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:protern_sync/app/cubit/app_theme.dart';
 import 'package:protern_sync/features/common/ui/generic/utils/build_context_extension.dart';
 
+import '../constants.dart';
+
 class PlainTextButton extends StatelessWidget {
   const PlainTextButton({
     super.key,
@@ -9,7 +11,7 @@ class PlainTextButton extends StatelessWidget {
     this.label,
     this.child,
     this.padding,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
   }) : assert(label != null || child != null);
 
   final VoidCallback? onPressed;

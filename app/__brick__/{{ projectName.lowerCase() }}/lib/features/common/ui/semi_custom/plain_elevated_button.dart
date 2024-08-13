@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../app/app_styles.dart';
+import '../constants.dart';
 import '../generic/generic_plain_elevated_button.dart';
 
 class PlainElevatedButton extends StatelessWidget {
@@ -19,7 +20,7 @@ class PlainElevatedButton extends StatelessWidget {
     this.padding,
     this.elevation = 0,
     this.shape,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
     this.child,
   }) : assert(label != null || child != null);
 

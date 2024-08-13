@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 import '../../../../app/cubit/app_theme.dart';
+import '../constants.dart';
 import '../generic/utils/build_context_extension.dart';
 
 class PlainContainer extends StatelessWidget {
@@ -13,7 +14,7 @@ class PlainContainer extends StatelessWidget {
     this.color,
     this.decoration,
     this.foregroundDecoration,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
     this.child,
   });
 

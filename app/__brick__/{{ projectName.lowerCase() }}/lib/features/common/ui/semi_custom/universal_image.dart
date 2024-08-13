@@ -3,6 +3,7 @@ import 'package:{{ projectName.snakeCase() }}/app/app_styles.dart';
 import 'package:{{ projectName.snakeCase() }}/app/cubit/app_theme.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/ui/generic/utils/build_context_extension.dart';
 
+import '../constants.dart';
 import '../generic/generic_universal_image.dart';
 
 class UniversalImage extends StatelessWidget {
@@ -19,7 +20,7 @@ class UniversalImage extends StatelessWidget {
     this.isCircle = false,
     this.useCaching = true,
     this.loadingPlaceholder,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
   });
 
   final String? uri;

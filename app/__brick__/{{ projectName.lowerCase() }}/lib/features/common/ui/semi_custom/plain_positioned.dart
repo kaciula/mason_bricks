@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../../../../app/cubit/app_theme.dart';
+import '../constants.dart';
 import '../generic/utils/build_context_extension.dart';
 
 class PlainPositioned extends StatelessWidget {
@@ -10,7 +11,7 @@ class PlainPositioned extends StatelessWidget {
     this.top,
     this.right,
     this.bottom,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
     required this.child,
   });
 

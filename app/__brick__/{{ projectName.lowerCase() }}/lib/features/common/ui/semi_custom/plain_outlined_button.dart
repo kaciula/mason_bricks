@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../app/app_styles.dart';
+import '../constants.dart';
 import '../generic/generic_plain_outlined_button.dart';
 
 class PlainOutlinedButton extends StatelessWidget {
@@ -18,7 +19,7 @@ class PlainOutlinedButton extends StatelessWidget {
     this.side,
     this.padding,
     this.shape,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
     this.child,
   }) : assert(label != null || child != null);
 

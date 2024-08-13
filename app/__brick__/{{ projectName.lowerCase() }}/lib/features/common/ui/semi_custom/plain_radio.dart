@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../app/app_styles.dart';
+import '../constants.dart';
 import '../generic/generic_plain_radio.dart';
 
 class PlainRadio<T> extends StatelessWidget {
@@ -18,7 +19,7 @@ class PlainRadio<T> extends StatelessWidget {
     this.maxHeight = 32,
     this.selectedFillColor = AppColors.mainColor,
     this.unselectedFillColor = AppColors.black,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
   });
 
   final T value;

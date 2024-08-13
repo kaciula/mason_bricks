@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 import '../../../../app/cubit/app_theme.dart';
+import '../constants.dart';
 import '../generic/utils/build_context_extension.dart';
 
 class PlainConstrainedBox extends StatelessWidget {
@@ -10,7 +11,7 @@ class PlainConstrainedBox extends StatelessWidget {
     this.maxWidth = double.infinity,
     this.minHeight = 0,
     this.maxHeight = double.infinity,
-    this.applyScaleFactor = true,
+    this.applyScaleFactor = applyScaleFactorGlobally,
     required this.child,
   });
 
