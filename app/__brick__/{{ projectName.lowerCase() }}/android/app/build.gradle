@@ -71,6 +71,11 @@ android {
         }
         release {
             signingConfig signingConfigs.release
+
+            ndk {
+                // To avoid Google Play warning of not finding symbols for crash reporting
+                debugSymbolLevel 'SYMBOL_TABLE'
+            }
         }
     }
 }
