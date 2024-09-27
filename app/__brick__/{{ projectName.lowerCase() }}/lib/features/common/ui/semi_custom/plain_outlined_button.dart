@@ -10,7 +10,7 @@ class PlainOutlinedButton extends StatelessWidget {
     required this.onPressed,
     this.label,
     this.icon,
-    this.minWidth = double.infinity,
+    this.minWidth = 0,
     this.maxWidth = double.infinity,
     this.minHeight = 0,
     this.maxHeight = double.infinity,

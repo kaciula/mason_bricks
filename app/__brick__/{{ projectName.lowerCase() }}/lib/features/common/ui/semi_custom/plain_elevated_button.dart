@@ -9,7 +9,7 @@ class PlainElevatedButton extends StatelessWidget {
     super.key,
     required this.onPressed,
     this.label,
-    this.minWidth = double.infinity,
+    this.minWidth = 0,
     this.maxWidth = double.infinity,
     this.minHeight = 0,
     this.maxHeight = double.infinity,
