@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:logging/logging.dart';
+import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:universal_io/io.dart';
 import 'package:uuid/uuid.dart';
@@ -7,23 +8,25 @@ import 'package:uuid/uuid.dart';
 class FileStorageService {
   late Directory cacheDir;
   late Directory appSupportDir;
-  late Directory appDataDir;
+  late Directory appDocumentsDir;
   late Directory downloadsDir;
 
   Future<void> init() async {
     cacheDir = await getTemporaryDirectory();
     // Create inner cache directory so you can delete all files in it without affecting the caches of other plugins such as Crashlytics on iOS
     cacheDir =
-        await Directory('${cacheDir.path}/inner').create(recursive: true);
+        await Directory(join(cacheDir.path, 'inner')).create(recursive: true);
     appSupportDir = await getApplicationSupportDirectory();
-    appDataDir = await getApplicationDocumentsDirectory();
+    appDocumentsDir = await getApplicationDocumentsDirectory();
+    if (Platform.isMacOS || Platform.isWindows) {
+      // If non-sandboxed macOS or Windows app, the Documents directory is too visible to the user
+      appDocumentsDir = appSupportDir;
+    }
     await _initDownloadsDir();
   }
 
   Future<void> _initDownloadsDir() async {
-    if (!Platform.isAndroid) {
-      downloadsDir = appDataDir;
-    } else {
+    if (Platform.isAndroid) {
       Directory? dir;
       dir = Directory('/storage/emulated/0/Download/');
       if (!(await dir.exists())) {
@@ -33,12 +36,14 @@ class FileStorageService {
         }
       }
       // LATER: Maybe use some external storage directory for Android
-      downloadsDir = dir ?? appDataDir;
+      downloadsDir = dir ?? appDocumentsDir;
+    } else {
+      downloadsDir = appDocumentsDir;
     }
   }
 
   File cacheFile(String fileName) {
-    return File('${cacheDir.path}/$fileName');
+    return File(join(cacheDir.path, fileName));
   }
 
   File randomCacheFile({required String extension}) {
@@ -46,7 +51,7 @@ class FileStorageService {
   }
 
   Directory cacheDirectory(String dirName) {
-    return Directory('${cacheDir.path}/$dirName');
+    return Directory(join(cacheDir.path, dirName));
   }
 
   Directory randomCacheDirectory() {
@@ -54,27 +59,28 @@ class FileStorageService {
   }
 
   File appSupportFile(String fileName) {
-    return File('${appSupportDir.path}/$fileName');
+    return File(join(appSupportDir.path, fileName));
   }
 
-  File appDataFile(String fileName) {
-    return File('${appDataDir.path}/$fileName');
+  File appDocumentsFile(String fileName) {
+    return File(join(appDocumentsDir.path, fileName));
   }
 
-  File randomAppDataFile({required String extension}) {
-    return appDataFile('${Uuid().v1()}.$extension');
+  File randomAppDocumentsFile({required String extension}) {
+    return appDocumentsFile('${Uuid().v1()}.$extension');
   }
 
-  Directory appDataDirectory(String fileName) {
-    return Directory('${appDataDir.path}/$fileName');
+  Directory appDocumentsDirectory(String dirName) {
+    return Directory(join(appDocumentsDir.path, dirName));
   }
 
   File downloadsFile(String fileName) {
-    return File('${downloadsDir.path}/$fileName');
+    return File(join(downloadsDir.path, fileName));
   }
 
   Future<File> saveFileFromAssets(
       String assetName, FileLocation location) async {
+    // Asset paths use Unix separator / everywhere even on Windows
     final String fileName = assetName.split('/').last;
     final File file = _file(fileName, location);
     // ignore: avoid_slow_async_io
@@ -120,8 +126,8 @@ class FileStorageService {
         return cacheFile(fileName);
       case FileLocation.appSupport:
         return appSupportFile(fileName);
-      case FileLocation.appData:
-        return appDataFile(fileName);
+      case FileLocation.appDocuments:
+        return appDocumentsFile(fileName);
       case FileLocation.downloads:
         return downloadsFile(fileName);
       case FileLocation.absolutePath:
