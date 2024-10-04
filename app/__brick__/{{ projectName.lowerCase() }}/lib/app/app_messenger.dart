@@ -11,27 +11,29 @@ class AppMessenger {
   final GlobalKey<ScaffoldMessengerState> messengerKey =
       GlobalKey<ScaffoldMessengerState>();
 
-  static const Duration _snackBarDisplayDuration = Duration(milliseconds: 4000);
+  static const Duration _snackBarDisplayDuration = Duration(seconds: 4);
 
-  void showInfoSnackBar(String msg) {
+  void showInfoSnackBar(String msg, {Duration? duration}) {
     final ScaffoldMessengerState messengerState = messengerKey.currentState!;
     messengerState.showSnackBar(
       SnackBar(
         content: Text(msg),
-        duration: _snackBarDisplayDuration,
+        duration: duration ?? _snackBarDisplayDuration,
       ),
     );
   }
 
-  void showErrorSnackBar(String errorMsg, {String? errorDetails}) {
+  void showErrorSnackBar(String errorMsg,
+      {String? errorDetails, Duration? duration}) {
     final ScaffoldMessengerState messengerState = messengerKey.currentState!;
 
     messengerState.showSnackBar(
       SnackBar(
         content: Text(errorMsg),
-        duration: errorDetails != null
-            ? const Duration(milliseconds: 10000)
-            : _snackBarDisplayDuration,
+        duration: duration ??
+            (errorDetails != null
+                ? const Duration(seconds: 10)
+                : _snackBarDisplayDuration),
         backgroundColor: AppColors.errorColor,
         action: errorDetails != null
             ? SnackBarAction(
