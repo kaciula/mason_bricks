@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:auto_localized/auto_localized.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
 import 'package:intl/intl_standalone.dart';
 import 'package:logging/logging.dart';
 
@@ -14,12 +15,17 @@ class AppLocale {
 
   static Future<void> init() async {
     await findSystemLocale();
+    // The app only supports English
+    if (!Intl.systemLocale.startsWith(englishLocale.languageCode)) {
+      Intl.systemLocale = englishLocale.languageCode;
+    }
     await initializeDateFormatting();
 
     _logger.fine('Current locale is $currentLocale');
   }
 
   static void updateLocale(Locale locale) {
+    Intl.systemLocale = locale.toString();
     AutoLocalization.updateLocale(locale);
   }
 }
