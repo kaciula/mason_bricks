@@ -1,7 +1,9 @@
 {{#useDio}}import 'package:dio/dio.dart';
 
 String mapErrorDetails(DioException e) {
-  String errorDetails = '${e.requestOptions.method} ${e.requestOptions.uri}';
+  String errorDetails =
+      '${e.requestOptions.method} ${e.requestOptions.uri}\n${e.requestOptions.data}';
+  errorDetails += '\n${e.response?.statusCode ?? ''}';
   if (e.response != null && e.response?.data != null) {
     errorDetails += '\n\n${e.response!.data}';
   }
