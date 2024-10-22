@@ -85,14 +85,7 @@ Future<void> _runGit(final HookContext context) async {
 
   result = await Process.run(
     'git',
-    [
-      '-C',
-      _projectDirectory(context),
-      'commit',
-      '-a',
-      '-m',
-      '"Initial commit"'
-    ],
+    ['-C', _projectDirectory(context), 'commit', '-a', '-m', 'Initial commit'],
     workingDirectory: _projectDirectory(context),
   );
   stdout.write(result.stdout);
