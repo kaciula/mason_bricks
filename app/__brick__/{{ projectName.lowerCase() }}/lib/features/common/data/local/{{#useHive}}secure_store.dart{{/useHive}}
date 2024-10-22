@@ -2,7 +2,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 class SecureStore {
   final FlutterSecureStorage _secureStorage = const FlutterSecureStorage(
-    iOptions: IOSOptions(accountName: 'app.unique'), // TODO: Change this to something unique
+    iOptions: IOSOptions(accountName: '{{ applicationId }}'),
   );
 
   String? _encryptionKey;

@@ -40,7 +40,7 @@ class MainAppState extends State<MainApp> {
           builder: (BuildContext context, AppState state) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'sample',
+              title: '{{ projectName.titleCase() }}',
               supportedLocales: context.supportedLocales,
               localizationsDelegates: context.localizationsDelegates,
               builder: (BuildContext context, Widget? child) {
