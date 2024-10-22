@@ -10,7 +10,7 @@ class CrashService {
   late UncaughtErrorHandler _uncaughtErrorHandler;
 
   Future<void> init() async {
-    {{#useFirebase}}if (kReleaseMode) {
+    {{#useFirebase}}if (kReleaseMode && !Platform.isWindows) {
       _uncaughtErrorHandler = UncaughtErrorHandlerRelease();
       await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
       FlutterError.onError = (FlutterErrorDetails details) async {
@@ -18,7 +18,10 @@ class CrashService {
       };
     } else {
       _uncaughtErrorHandler = UncaughtErrorHandlerDebug();
-      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);
+      if (!Platform.isWindows) {
+        await FirebaseCrashlytics.instance
+            .setCrashlyticsCollectionEnabled(false);
+      }
     }{{/useFirebase}}
     {{^useFirebase}}_uncaughtErrorHandler = UncaughtErrorHandlerDebug();{{/useFirebase}}
 
@@ -37,6 +40,10 @@ class CrashService {
     ).sendPort);
   }
 
+  void initInIsolate() {
+    _uncaughtErrorHandler = UncaughtErrorHandlerDebug();
+  }
+
   Future<void> reportUnexpectedError(
       Exception exception, StackTrace trace, String context,
       {bool? killApp}) {
@@ -51,4 +58,9 @@ class CrashService {
   Future<void> setUserId(String? userId) {
     return _uncaughtErrorHandler.setUserId(userId);
   }
+
+  Future<void> setCustomKey(String key, dynamic value) {
+    return _uncaughtErrorHandler.setCustomKey(key, value);
+  }
 }
+
