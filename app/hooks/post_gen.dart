@@ -56,7 +56,7 @@ Future<void> _configureFirebase(final HookContext context) async {
 Future<void> _formatProject(final HookContext context) async {
   final progress = context.logger.progress('Format project');
   var result = await Process.run(
-    'flutter',
+    'dart',
     ['format', _projectDirectory(context)],
     workingDirectory: _projectDirectory(context),
   );
