@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:protern_sync/app/cubit/app_theme.dart';
-import 'package:protern_sync/features/common/ui/generic/utils/build_context_extension.dart';
 
 import '../../../../app/app_styles.dart';
 import '../constants.dart';
+import '../generic/generic_plain_text_button.dart';
 
 class PlainTextButton extends StatelessWidget {
   const PlainTextButton({
@@ -22,6 +21,7 @@ class PlainTextButton extends StatelessWidget {
   final TextStyle? labelStyle;
   final Color foregroundColor;
   final EdgeInsets? padding;
+  final bool applyScaleFactor;
   final Widget? child;
 
   static ButtonStyle primaryStyle(double scaleFactor) => TextButton.styleFrom(

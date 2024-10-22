@@ -8,7 +8,7 @@ class PlainTextFormField extends StatelessWidget {
   const PlainTextFormField({
     super.key,
     this.enabled = true,
-    this.textStyle = const TextStyle(fontSize: 16, color: AppColors.grey22),
+    this.textStyle = const TextStyle(fontSize: 16, color: AppColors.grey99),
     this.hintText,
     this.hintStyle,
     this.textCapitalization = TextCapitalization.none,

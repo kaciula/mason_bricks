@@ -17,6 +17,7 @@ class AppColors {
   // Semantic colors
   static const Color bgColor = white;
   static const Color mainColor = green;
+  static const Color errorColor = red;
 }
 
 class AppFonts {

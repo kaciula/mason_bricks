@@ -154,7 +154,7 @@ class FileStorageService {
   }
 }
 
-enum FileLocation { cache, appSupport, appData, downloads, absolutePath }
+enum FileLocation { cache, appSupport, appDocuments, downloads, absolutePath }
 
 // ignore: unused_element
 final Logger _logger = Logger('FileStorageService');

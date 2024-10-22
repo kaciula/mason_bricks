@@ -5,7 +5,7 @@ import '../../../../app/app_styles.dart';
 class PlainDivider extends StatelessWidget {
   const PlainDivider({
     super.key,
-    this.color = AppColors.greyE8E,
+    this.color = AppColors.grey99,
     this.indent = 0,
     this.endIndent = 0,
   });

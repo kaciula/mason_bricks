@@ -16,6 +16,10 @@ extension StringNonNullableExt on String {
         containsIgnoreCase(' $value');
   }
 
+  bool endsWithIgnoreCase(String value) {
+    return toLowerCase().endsWith(value.toLowerCase());
+  }
+
   String capitalizeFirst() {
     if (isNotEmpty) {
       return '${this[0].toUpperCase()}${length > 1 ? substring(1).toLowerCase() : ''}';
