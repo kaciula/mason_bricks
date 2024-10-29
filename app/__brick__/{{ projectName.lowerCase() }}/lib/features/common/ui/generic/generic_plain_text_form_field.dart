@@ -7,6 +7,8 @@ class GenericPlainTextFormField extends StatelessWidget {
     required this.textStyle,
     required this.hintText,
     required this.hintStyle,
+    required this.labelText,
+    required this.labelStyle,
     required this.textCapitalization,
     required this.textInputType,
     required this.obscureText,
@@ -39,6 +41,8 @@ class GenericPlainTextFormField extends StatelessWidget {
   final TextStyle? textStyle;
   final String? hintText;
   final TextStyle? hintStyle;
+  final String? labelText;
+  final TextStyle? labelStyle;
   final TextCapitalization textCapitalization;
   final TextInputType? textInputType;
   final bool obscureText;
@@ -82,6 +86,8 @@ class GenericPlainTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: hintStyle,
+        labelText: labelText,
+        labelStyle: labelStyle,
         fillColor: fillColor,
         prefixIcon: prefixIcon,
         prefixIconConstraints: prefixIconConstraints,

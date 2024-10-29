@@ -11,6 +11,8 @@ class PlainTextFormField extends StatelessWidget {
     this.textStyle = const TextStyle(fontSize: 16, color: AppColors.grey99),
     this.hintText,
     this.hintStyle,
+    this.labelText,
+    this.labelStyle,
     this.textCapitalization = TextCapitalization.none,
     this.textInputType,
     this.obscureText = false,
@@ -40,6 +42,8 @@ class PlainTextFormField extends StatelessWidget {
   final TextStyle? textStyle;
   final String? hintText;
   final TextStyle? hintStyle;
+  final String? labelText;
+  final TextStyle? labelStyle;
   final TextCapitalization textCapitalization;
   final TextInputType? textInputType;
   final bool obscureText;
@@ -72,6 +76,10 @@ class PlainTextFormField extends StatelessWidget {
         fillColor: AppColors.white,
         filled: true,
         hintStyle: TextStyle(
+          fontSize: 16,
+          color: AppColors.black,
+        ),
+        labelStyle: TextStyle(
           fontSize: 16,
           color: AppColors.black,
         ),
@@ -115,6 +123,8 @@ class PlainTextFormField extends StatelessWidget {
       textStyle: textStyle,
       hintText: hintText,
       hintStyle: hintStyle,
+      labelStyle: labelStyle,
+      labelText: labelText,
       textCapitalization: textCapitalization,
       textInputType: textInputType,
       obscureText: obscureText,

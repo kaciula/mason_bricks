@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../../app/app_styles.dart';
+import 'plain_icon.dart';
 
 class PlainAppBar extends StatelessWidget implements PreferredSizeWidget {
   const PlainAppBar({
@@ -15,7 +16,9 @@ class PlainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool isStatusBarDark;
   final List<Widget>? actions;
 
-  static AppBarTheme primaryTheme(double scaleFactor) => AppBarTheme();
+  static AppBarTheme primaryTheme(double scaleFactor) => AppBarTheme(
+        iconTheme: PlainIcon.appBarIconTheme(scaleFactor),
+      );
 
   @override
   Widget build(BuildContext context) {
