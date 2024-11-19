@@ -15,9 +15,9 @@ class AppColors {
   static const Color transparent = Colors.transparent;
 
   // Semantic colors
-  static const Color bgColor = white;
-  static const Color mainColor = green;
-  static const Color errorColor = red;
+  static const Color bg = white;
+  static const Color main = green;
+  static const Color error = red;
 }
 
 class AppFonts {

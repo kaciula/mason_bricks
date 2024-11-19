@@ -9,7 +9,7 @@ class PlainScaffold extends StatelessWidget {
     this.appBar,
     this.resizeToAvoidBottomInset,
     this.extendBodyBehindAppBar,
-    this.backgroundColor = AppColors.bgColor,
+    this.backgroundColor = AppColors.bg,
     this.isStatusBarDark = true,
     required this.body,
     this.floatingActionButton,

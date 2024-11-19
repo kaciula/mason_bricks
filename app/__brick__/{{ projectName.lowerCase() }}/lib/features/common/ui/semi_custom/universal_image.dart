@@ -51,7 +51,7 @@ class UniversalImage extends StatelessWidget {
       fit: fit,
       isCircle: isCircle,
       useCaching: useCaching,
-      errorColor: AppColors.errorColor,
+      errorColor: AppColors.error,
       loadingPlaceholder: loadingPlaceholder,
       errorPlaceholder: null,
     );

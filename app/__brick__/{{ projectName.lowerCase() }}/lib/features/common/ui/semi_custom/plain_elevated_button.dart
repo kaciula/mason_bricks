@@ -82,7 +82,7 @@ class PlainElevatedButton extends StatelessWidget {
   }
 }
 
-const Color _backgroundColor = AppColors.mainColor;
+const Color _backgroundColor = AppColors.main;
 const Color _foregroundColor = AppColors.white;
 const Color _disabledBackgroundColor = AppColors.green;
 const Color _disabledForegroundColor = AppColors.pink;

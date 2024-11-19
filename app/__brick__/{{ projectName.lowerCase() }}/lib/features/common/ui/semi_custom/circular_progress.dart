@@ -6,7 +6,7 @@ import '../generic/generic_circular_progress.dart';
 class CircularProgress extends StatelessWidget {
   const CircularProgress({
     super.key,
-    this.color = AppColors.mainColor,
+    this.color = AppColors.main,
   });
 
   final Color color;

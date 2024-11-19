@@ -11,30 +11,33 @@ class AppMessenger {
   final GlobalKey<ScaffoldMessengerState> messengerKey =
       GlobalKey<ScaffoldMessengerState>();
 
-  static const Duration _snackBarDisplayDuration = Duration(seconds: 4);
+  static const Duration _defaultDuration = Duration(seconds: 4);
 
   void showInfoSnackBar(String msg, {Duration? duration}) {
     final ScaffoldMessengerState messengerState = messengerKey.currentState!;
     messengerState.showSnackBar(
       SnackBar(
         content: Text(msg),
-        duration: duration ?? _snackBarDisplayDuration,
+        duration: duration ?? _defaultDuration,
       ),
     );
   }
 
-  void showErrorSnackBar(String errorMsg,
-      {String? errorDetails, Duration? duration}) {
+  void showErrorSnackBar(
+    String errorMsg, {
+    String? errorDetails,
+    Duration? duration,
+    Color backgroundColor = AppColors.red,
+  }) {
     final ScaffoldMessengerState messengerState = messengerKey.currentState!;
-
     messengerState.showSnackBar(
       SnackBar(
         content: Text(errorMsg),
         duration: duration ??
             (errorDetails != null
                 ? const Duration(seconds: 10)
-                : _snackBarDisplayDuration),
-        backgroundColor: AppColors.errorColor,
+                : _defaultDuration),
+        backgroundColor: backgroundColor,
         action: errorDetails != null
             ? SnackBarAction(
                 label: Strings.details.get(),
@@ -52,7 +55,7 @@ class AppMessenger {
       context: appNavigator.context,
       builder: (BuildContext context) {
         return PlainContainer(
-          color: AppColors.errorColor,
+          color: AppColors.error,
           child: SingleChildScrollView(
             child: PlainPadding(
               padding: const EdgeInsets.all(16),

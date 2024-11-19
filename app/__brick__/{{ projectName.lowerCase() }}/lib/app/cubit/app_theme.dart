@@ -33,10 +33,10 @@ class AppTheme with _$AppTheme {
   ThemeData get themeData {
     return ThemeData(
       useMaterial3: false,
-      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.mainColor),
+      colorScheme: ColorScheme.fromSeed(seedColor: AppColors.main),
       brightness: Brightness.light,
-      canvasColor: AppColors.bgColor,
-      scaffoldBackgroundColor: AppColors.bgColor,
+      canvasColor: AppColors.bg,
+      scaffoldBackgroundColor: AppColors.bg,
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: PlainElevatedButton.primaryStyle(scaleFactor),
       ),

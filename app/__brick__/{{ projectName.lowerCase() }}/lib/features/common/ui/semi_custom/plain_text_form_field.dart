@@ -88,7 +88,7 @@ class PlainTextFormField extends StatelessWidget {
         errorBorder: _errorBorder,
         errorStyle: TextStyle(
           fontSize: 14,
-          color: AppColors.errorColor,
+          color: AppColors.error,
         ),
       );
 
@@ -102,7 +102,7 @@ class PlainTextFormField extends StatelessWidget {
 
   static final OutlineInputBorder _focusedBorder = OutlineInputBorder(
     borderSide: const BorderSide(
-      color: AppColors.mainColor,
+      color: AppColors.main,
       width: _borderWidth,
     ),
     borderRadius: BorderRadius.circular(_borderRadius),
@@ -110,7 +110,7 @@ class PlainTextFormField extends StatelessWidget {
 
   static final OutlineInputBorder _errorBorder = OutlineInputBorder(
     borderSide: const BorderSide(
-      color: AppColors.errorColor,
+      color: AppColors.error,
       width: _borderWidth,
     ),
     borderRadius: BorderRadius.circular(_borderRadius),
