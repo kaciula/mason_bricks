@@ -13,6 +13,21 @@ class AppMessenger {
 
   static const Duration _defaultDuration = Duration(seconds: 4);
 
+  void showSnackBar(
+    String msg, {
+    Duration? duration,
+    Color backgroundColor = AppColors.main,
+  }) {
+    final ScaffoldMessengerState messengerState = messengerKey.currentState!;
+    messengerState.showSnackBar(
+      SnackBar(
+        content: Text(msg),
+        duration: duration ?? _defaultDuration,
+        backgroundColor: backgroundColor,
+      ),
+    );
+  }
+
   void showInfoSnackBar(String msg, {Duration? duration}) {
     final ScaffoldMessengerState messengerState = messengerKey.currentState!;
     messengerState.showSnackBar(

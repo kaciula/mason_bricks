@@ -144,7 +144,7 @@ class FileStorageService {
   }
 
   Future<void> clearCache() async {
-    cacheDir.list().forEach((it) async {
+    cacheDir.list(followLinks: false).forEach((it) async {
       if (it is File) {
         await it.delete();
       } else if (it is Directory) {

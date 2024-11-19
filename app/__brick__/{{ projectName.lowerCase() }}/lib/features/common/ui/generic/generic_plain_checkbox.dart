@@ -25,6 +25,8 @@ class GenericPlainCheckbox extends StatelessWidget {
     required this.selectedBorderColor,
     required this.unselectedFillColor,
     required this.unselectedBorderColor,
+    required this.disabledFillColor,
+    required this.disabledBorderColor,
     required this.applyScaleFactor,
   });
 
@@ -32,7 +34,7 @@ class GenericPlainCheckbox extends StatelessWidget {
   final Widget? prefix;
   final Widget? suffix;
   final double suffixPadding;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final EdgeInsets padding;
   final bool fullWidth;
   final double iconScale;
@@ -43,6 +45,8 @@ class GenericPlainCheckbox extends StatelessWidget {
   final Color selectedBorderColor;
   final Color unselectedFillColor;
   final Color unselectedBorderColor;
+  final Color disabledFillColor;
+  final Color disabledBorderColor;
   final bool applyScaleFactor;
 
   @override
@@ -71,11 +75,14 @@ class GenericPlainCheckbox extends StatelessWidget {
                 scale: iconScale * scaleFactor,
                 child: Checkbox(
                   value: value,
-                  onChanged: (value) => onTap(),
+                  onChanged: onTap != null ? (value) => onTap!.call() : null,
                   checkColor: checkColor,
                   fillColor: WidgetStateProperty.resolveWith((states) {
                     if (states.contains(WidgetState.selected)) {
                       return selectedFillColor;
+                    }
+                    if (states.contains(WidgetState.disabled)) {
+                      return disabledFillColor;
                     }
                     return unselectedFillColor;
                   }),
@@ -87,7 +94,9 @@ class GenericPlainCheckbox extends StatelessWidget {
                       return BorderSide(
                         color: states.contains(WidgetState.selected)
                             ? selectedBorderColor
-                            : unselectedBorderColor,
+                            : (states.contains(WidgetState.disabled)
+                                ? disabledBorderColor
+                                : unselectedBorderColor),
                         width: 1,
                       );
                     },
