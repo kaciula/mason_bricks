@@ -22,20 +22,27 @@ Future<void> registerInstances() async {
   {{#useFirebase}}final FireService fireService = FireService();
   getIt.registerSingleton(fireService);
   await fireService.init();{{/useFirebase}}
+
   final CrashService crashService = CrashService();
   getIt.registerSingleton(crashService);
+  await crashService.init();
+
   final FileStorageService fileStorageService = FileStorageService();
   getIt.registerSingleton(fileStorageService);
   await fileStorageService.init();
+
   final LogService logService =
       LogService(crashService, fileStorageService, appInfoStore);
   getIt.registerSingleton(logService);
+  await logService.init();
+
   {{#useHive}}final SecureStore secureStore = SecureStore();
   getIt.registerSingleton(secureStore);
   final LocalStore localStore = LocalStore(secureStore);
   getIt.registerSingleton(localStore);
   final AppInfo appInfo = await appInfoStore.get();
   await localStore.init(isFirstTime: appInfo.isFirstTime);{{/useHive}}
+
   getIt.registerSingleton(RouteObserver());
   getIt.registerSingleton(AppMessenger());
   getIt.registerSingleton(AppNavigator());
