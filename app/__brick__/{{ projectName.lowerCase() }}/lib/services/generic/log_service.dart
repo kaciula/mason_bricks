@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_logcat_monitor/flutter_logcat_monitor.dart';
 import 'package:logging/logging.dart';
 import 'package:universal_io/io.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/data/local/app_info_store.dart';
@@ -36,6 +37,14 @@ class LogService {
     _keepLogsInFile = isEnabled;
     _setLoggerLevel();
 
+    if (Platform.isAndroid) {
+      if (_keepLogsInFile) {
+        _listenToLogcat();
+      } else {
+        FlutterLogcatMonitor.stopMonitor();
+      }
+    }
+
     // Clear log file
     logFile.writeAsStringSync('');
 
@@ -47,6 +56,20 @@ class LogService {
     logFile = fileStorageService.appSupportFile('dev-logs.log');
     _setLoggerLevel();
     Logger.root.onRecord.listen(log);
+
+    if (Platform.isAndroid) {
+      if (_keepLogsInFile) {
+        await _listenToLogcat();
+      }
+    }
+  }
+
+  Future<void> _listenToLogcat() async {
+    FlutterLogcatMonitor.addListen((dynamic logcatLog) {
+      log(LogRecord(Level.INFO, logcatLog, 'Logcat'));
+    });
+
+    await FlutterLogcatMonitor.startMonitor('');
   }
 
   void log(LogRecord record) {
