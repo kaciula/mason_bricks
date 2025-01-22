@@ -36,6 +36,7 @@ class PlainTextFormField extends StatelessWidget {
     this.autovalidateMode,
     this.textAlign = TextAlign.start,
     this.borderRadius,
+    this.autofillHints,
   });
 
   final bool enabled;
@@ -67,6 +68,7 @@ class PlainTextFormField extends StatelessWidget {
   final AutovalidateMode? autovalidateMode;
   final TextAlign textAlign;
   final BorderRadius? borderRadius;
+  final Iterable<String>? autofillHints;
 
   static InputDecorationTheme primaryTheme(double scaleFactor) =>
       InputDecorationTheme(
@@ -159,6 +161,7 @@ class PlainTextFormField extends StatelessWidget {
       errorBorder: borderRadius != null
           ? _errorBorder.copyWith(borderRadius: borderRadius)
           : null,
+      autofillHints: autofillHints,
     );
   }
 }

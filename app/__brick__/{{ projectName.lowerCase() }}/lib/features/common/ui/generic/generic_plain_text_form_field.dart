@@ -35,6 +35,7 @@ class GenericPlainTextFormField extends StatelessWidget {
     required this.enabledBorder,
     required this.focusedBorder,
     required this.errorBorder,
+    required this.autofillHints,
   });
 
   final bool enabled;
@@ -69,6 +70,7 @@ class GenericPlainTextFormField extends StatelessWidget {
   final InputBorder? enabledBorder;
   final InputBorder? focusedBorder;
   final InputBorder? errorBorder;
+  final Iterable<String>? autofillHints;
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +109,7 @@ class GenericPlainTextFormField extends StatelessWidget {
       minLines: minLines,
       maxLines: maxLines,
       cursorColor: cursorColor,
+      autofillHints: autofillHints,
     );
   }
 }
