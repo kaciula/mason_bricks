@@ -1,0 +1,59 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:math';
+import 'dart:typed_data';
+
+import 'package:logging/logging.dart';
+
+import '../../../../services/generic/file_storage_service.dart';
+import '../../../common/data/local/secure_store.dart';
+import 'app_database.dart';
+import 'models/utils.dart';
+
+class LocalStore {
+  LocalStore(this.secureStore, this.fileStorageService);
+
+  final SecureStore secureStore;
+  final FileStorageService fileStorageService;
+
+  // ignore: unused_field
+  late final AppDatabase _appDatabase;
+
+  Future<void> init({required bool isFirstTime}) async {
+    if (isFirstTime) {
+      _logger.info('Delete encryption key on first time run');
+      // The encryption key survives app reinstalls
+      await secureStore.deleteEncryptionKey();
+    }
+
+    late String encryptionKey;
+    if (!await secureStore.hasEncryptionKey()) {
+      _logger.info('Generate new encryption key');
+      encryptionKey = _generateEncryptionKey();
+      await secureStore.persistEncryptionKey(encryptionKey);
+    } else {
+      encryptionKey = secureStore.encryptionKey!;
+    }
+    EncryptedStringConverter.encryptionKey = encryptionKey;
+
+    _appDatabase = AppDatabase(fileStorageService);
+    // await _appDatabase.reset();
+
+    await _initCacheInMemory();
+  }
+
+  String _generateEncryptionKey() {
+    const int numBytes = 32;
+    final Random random = Random.secure();
+    final Uint8List buffer = Uint8List(numBytes);
+    for (int i = 0; i < numBytes; i++) {
+      buffer[i] = random.nextInt(0xFF + 1);
+    }
+    return base64UrlEncode(buffer);
+  }
+
+  Future<void> _initCacheInMemory() async {}
+}
+
+// ignore: unused_element
+final Logger _logger = Logger('LocalStore');

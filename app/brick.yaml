@@ -38,10 +38,15 @@ vars:
     description: Add Firebase functionality condition
     default: true
     prompt: Use Firebase package (Crashlytics etc.)?
+  useDrift:
+    type: boolean
+    description: Add Drift functionality condition
+    default: true
+    prompt: Use Drift package?
   useHive:
     type: boolean
     description: Add hive functionality condition
-    default: true
+    default: false
     prompt: Use hive package?
   useEn:
     type: boolean
