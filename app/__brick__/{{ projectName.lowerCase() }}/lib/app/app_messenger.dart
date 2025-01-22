@@ -4,6 +4,7 @@ import 'package:{{ projectName.snakeCase() }}/start/service_locator.dart';
 
 import '../features/common/ui/semi_custom/plain_container.dart';
 import '../features/common/ui/semi_custom/plain_padding.dart';
+import '../features/common/ui/semi_custom/plain_gap.dart';
 import 'app_strings.al.dart';
 import 'app_styles.dart';
 
@@ -81,7 +82,7 @@ class AppMessenger {
                     textAlign: TextAlign.center,
                     style: TextStyle(color: AppColors.white),
                   ),
-                  const SizedBox(height: 8),
+                  const PlainGap(8),
                   Text(errorDetails, style: TextStyle(color: AppColors.white)),
                 ],
               ),
