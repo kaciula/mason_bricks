@@ -4,3 +4,12 @@ targets:
       - $package$
       - lib/**
       - resources/lang/**
+{{#useDrift}}    builders:
+      drift_dev:
+        options:
+          databases:
+            app_database: lib/features/main/data/local/app_database.dart
+          schema_dir: resources/drift_schemas/
+        generate_for:
+          include:
+            - 'lib/features/main/data/local/**'{{/useDrift}}
