@@ -34,7 +34,7 @@ class _{{ name.pascalCase() }}PageState extends State<{{ name.pascalCase() }}Pag
 
   Widget _builder(BuildContext context, {{ name.pascalCase() }}State state) {
     _logger.info('rebuild state=$state');
-    return Scaffold(
+    return PlainScaffold(
       body: _body(context, state),
     );
   }
