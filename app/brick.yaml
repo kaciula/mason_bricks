@@ -1,6 +1,6 @@
 name: app
 description: Create app skeleton
-version: 0.2.2+2
+version: 0.2.2+3
 
 environment:
   mason: ">=0.1.0-dev.38 <0.1.0"
