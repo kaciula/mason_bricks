@@ -10,7 +10,7 @@ class PlainTextButton extends StatelessWidget {
     required this.onPressed,
     this.label,
     this.labelStyle,
-    this.foregroundColor = AppColors.pink,
+    this.foregroundColor = _foregroundColor,
     this.padding,
     this.applyScaleFactor = applyScaleFactorGlobally,
     this.child,
@@ -25,7 +25,7 @@ class PlainTextButton extends StatelessWidget {
   final Widget? child;
 
   static ButtonStyle primaryStyle(double scaleFactor) => TextButton.styleFrom(
-        foregroundColor: AppColors.pink,
+        foregroundColor: _foregroundColor,
         minimumSize: Size.zero,
         tapTargetSize: MaterialTapTargetSize.padded,
         padding: EdgeInsets.only(
@@ -54,3 +54,5 @@ class PlainTextButton extends StatelessWidget {
     );
   }
 }
+
+const Color _foregroundColor = AppColors.pink;

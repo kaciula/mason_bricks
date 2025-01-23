@@ -14,8 +14,8 @@ class PlainOutlinedButton extends StatelessWidget {
     this.maxWidth = double.infinity,
     this.minHeight = 0,
     this.maxHeight = double.infinity,
-    this.backgroundColor = AppColors.white,
-    this.foregroundColor = AppColors.pink,
+    this.backgroundColor = _backgroundColor,
+    this.foregroundColor = _foregroundColor,
     this.side,
     this.padding,
     this.shape,
@@ -40,8 +40,8 @@ class PlainOutlinedButton extends StatelessWidget {
 
   static ButtonStyle primaryStyle(double scaleFactor) =>
       OutlinedButton.styleFrom(
-        backgroundColor: AppColors.green,
-        foregroundColor: AppColors.white,
+        backgroundColor: _backgroundColor,
+        foregroundColor: _foregroundColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(7),
         ),
@@ -53,7 +53,7 @@ class PlainOutlinedButton extends StatelessWidget {
           fontSize: 15,
           fontFamily: AppFonts.roboto,
         ),
-        side: BorderSide(color: AppColors.green, width: 1),
+        side: BorderSide(color: _borderColor, width: 1),
       );
 
   @override
@@ -76,3 +76,7 @@ class PlainOutlinedButton extends StatelessWidget {
     );
   }
 }
+
+const Color _backgroundColor = AppColors.white;
+const Color _foregroundColor = AppColors.main;
+const Color _borderColor = AppColors.main;
