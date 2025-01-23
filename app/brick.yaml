@@ -3,7 +3,7 @@ description: Create app skeleton
 version: 0.2.2+3
 
 environment:
-  mason: ">=0.1.2 <0.1.9"
+  mason: ">=0.1.0 <0.1.9"
 
 # Variables specify dynamic values that your brick depends on.
 # Zero or more variables can be specified for a given brick.
