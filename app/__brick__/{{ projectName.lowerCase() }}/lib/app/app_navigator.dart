@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/ui/semi_custom/info_dialog.dart';
+import 'package:{{ projectName.snakeCase() }}/features/common/ui/semi_custom/plain_constrained_box.dart';
 import 'package:{{ projectName.snakeCase() }}/features/common/ui/semi_custom/sure_dialog.dart';
 
 class AppNavigator {
@@ -60,6 +61,43 @@ class AppNavigator {
         showPlainDialog(
           dialog,
           barrierDismissible: barrierDismissible,
+          usePostFrameCallback: false,
+        );
+      });
+    }
+  }
+
+  void showSheet(
+    Widget sheet, {
+    bool isScrollControlled = false,
+    bool usePostFrameCallback = false,
+    double borderRadius = 20,
+    double heightFactor = 0.9,
+  }) {
+    if (!usePostFrameCallback) {
+      showModalBottomSheet(
+        context: context,
+        clipBehavior: Clip.hardEdge,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(borderRadius),
+            topRight: Radius.circular(borderRadius),
+          ),
+        ),
+        isScrollControlled: isScrollControlled,
+        builder: (BuildContext context) => isScrollControlled
+            ? PlainConstrainedBox(
+                maxHeight: heightFactor * MediaQuery.sizeOf(context).height,
+                applyScaleFactor: false,
+                child: sheet,
+              )
+            : sheet,
+      );
+    } else {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showSheet(
+          sheet,
+          isScrollControlled: isScrollControlled,
           usePostFrameCallback: false,
         );
       });
