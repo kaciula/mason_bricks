@@ -29,7 +29,7 @@ class PlainCheckbox extends StatelessWidget {
   final Widget? prefix;
   final Widget? suffix;
   final double suffixPadding;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final EdgeInsets padding;
   final bool fullWidth;
   final double iconScale;
